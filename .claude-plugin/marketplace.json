@@ -1,0 +1,14 @@
+{
+  "name": "solytus",
+  "owner": {
+    "name": "Sean Park",
+    "url": "https://solytus.com"
+  },
+  "plugins": [
+    {
+      "name": "habitat",
+      "source": "./plugins/habitat",
+      "description": "Find & track places to live that fit an evolving preference profile — interview, evaluate, shortlist, log. Invoked by name (\"Habitat, ...\")."
+    }
+  ]
+}

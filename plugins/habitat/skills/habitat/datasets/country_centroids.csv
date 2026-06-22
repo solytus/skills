@@ -1,0 +1,251 @@
+iso2,iso3,name,capital,lat,lon,tz,currency,region,subregion
+AD,AND,Andorra,Andorra la Vella,42.5,1.5,UTC+00,EUR,Europe,Southern Europe
+AE,ARE,United Arab Emirates,Abu Dhabi,24,54,UTC+04,AED,Asia,Western Asia
+AF,AFG,Afghanistan,Kabul,33,65,UTC+04,AFN,Asia,Southern Asia
+AG,ATG,Antigua and Barbuda,Saint John's,17.05,-61.8,UTC-04,XCD,Americas,Caribbean
+AI,AIA,Anguilla,The Valley,18.25,-63.16666666,UTC-04,XCD,Americas,Caribbean
+AL,ALB,Albania,Tirana,41,20,UTC+01,ALL,Europe,Southeast Europe
+AM,ARM,Armenia,Yerevan,40,45,UTC+03,AMD,Asia,Western Asia
+AO,AGO,Angola,Luanda,-12.5,18.5,UTC+01,AOA,Africa,Middle Africa
+AQ,ATA,Antarctica,,-90,0,UTC+00,,Antarctic,
+AR,ARG,Argentina,Buenos Aires,-34,-64,UTC-04,ARS,Americas,South America
+AS,ASM,American Samoa,Pago Pago,-14.33333333,-170,UTC-11,USD,Oceania,Polynesia
+AT,AUT,Austria,Vienna,47.33333333,13.33333333,UTC+01,EUR,Europe,Central Europe
+AU,AUS,Australia,Canberra,-27,133,UTC+09,AUD,Oceania,Australia and New Zealand
+AW,ABW,Aruba,Oranjestad,12.5,-69.96666666,UTC-05,AWG,Americas,Caribbean
+AX,ALA,Åland Islands,Mariehamn,60.116667,19.9,UTC+01,EUR,Europe,Northern Europe
+AZ,AZE,Azerbaijan,Baku,40.5,47.5,UTC+03,AZN,Asia,Western Asia
+BA,BIH,Bosnia and Herzegovina,Sarajevo,44,18,UTC+01,BAM,Europe,Southeast Europe
+BB,BRB,Barbados,Bridgetown,13.16666666,-59.53333333,UTC-04,BBD,Americas,Caribbean
+BD,BGD,Bangladesh,Dhaka,24,90,UTC+06,BDT,Asia,Southern Asia
+BE,BEL,Belgium,Brussels,50.83333333,4,UTC+00,EUR,Europe,Western Europe
+BF,BFA,Burkina Faso,Ouagadougou,13,-2,UTC+00,XOF,Africa,Western Africa
+BG,BGR,Bulgaria,Sofia,43,25,UTC+02,BGN,Europe,Southeast Europe
+BH,BHR,Bahrain,Manama,26,50.55,UTC+03,BHD,Asia,Western Asia
+BI,BDI,Burundi,Gitega,-3.5,30,UTC+02,BIF,Africa,Eastern Africa
+BJ,BEN,Benin,Porto-Novo,9.5,2.25,UTC+00,XOF,Africa,Western Africa
+BL,BLM,Saint Barthélemy,Gustavia,18.5,-63.41666666,UTC-04,EUR,Americas,Caribbean
+BM,BMU,Bermuda,Hamilton,32.33333333,-64.75,UTC-04,BMD,Americas,North America
+BN,BRN,Brunei,Bandar Seri Begawan,4.5,114.66666666,UTC+08,BND,Asia,South-Eastern Asia
+BO,BOL,Bolivia,Sucre,-17,-65,UTC-04,BOB,Americas,South America
+BQ,BES,Caribbean Netherlands,Kralendijk,12.18,-68.25,UTC-05,USD,Americas,Caribbean
+BR,BRA,Brazil,Brasília,-10,-55,UTC-04,BRL,Americas,South America
+BS,BHS,Bahamas,Nassau,24.25,-76,UTC-05,BSD,Americas,Caribbean
+BT,BTN,Bhutan,Thimphu,27.5,90.5,UTC+06,BTN,Asia,Southern Asia
+BV,BVT,Bouvet Island,,-54.43333333,3.4,UTC+00,,Antarctic,
+BW,BWA,Botswana,Gaborone,-22,24,UTC+02,BWP,Africa,Southern Africa
+BY,BLR,Belarus,Minsk,53,28,UTC+02,BYN,Europe,Eastern Europe
+BZ,BLZ,Belize,Belmopan,17.25,-88.75,UTC-06,BZD,Americas,Central America
+CA,CAN,Canada,Ottawa,60,-95,UTC-06,CAD,Americas,North America
+CC,CCK,Cocos (Keeling) Islands,West Island,-12.5,96.83333333,UTC+06,AUD,Oceania,Australia and New Zealand
+CD,COD,DR Congo,Kinshasa,0,25,UTC+02,CDF,Africa,Middle Africa
+CF,CAF,Central African Republic,Bangui,7,21,UTC+01,XAF,Africa,Middle Africa
+CG,COG,Congo,Brazzaville,-1,15,UTC+01,XAF,Africa,Middle Africa
+CH,CHE,Switzerland,Bern,47,8,UTC+01,CHF,Europe,Western Europe
+CI,CIV,Ivory Coast,Yamoussoukro,8,-5,UTC+00,XOF,Africa,Western Africa
+CK,COK,Cook Islands,Avarua,-21.23333333,-159.76666666,UTC-11,CKD,Oceania,Polynesia
+CL,CHL,Chile,Santiago,-30,-71,UTC-05,CLP,Americas,South America
+CM,CMR,Cameroon,Yaoundé,6,12,UTC+01,XAF,Africa,Middle Africa
+CN,CHN,China,Beijing,35,105,UTC+07,CNY,Asia,Eastern Asia
+CO,COL,Colombia,Bogotá,4,-72,UTC-05,COP,Americas,South America
+CR,CRI,Costa Rica,San José,10,-84,UTC-06,CRC,Americas,Central America
+CU,CUB,Cuba,Havana,21.5,-80,UTC-05,CUC,Americas,Caribbean
+CV,CPV,Cape Verde,Praia,16,-24,UTC-02,CVE,Africa,Western Africa
+CW,CUW,Curaçao,Willemstad,12.116667,-68.933333,UTC-05,ANG,Americas,Caribbean
+CX,CXR,Christmas Island,Flying Fish Cove,-10.5,105.66666666,UTC+07,AUD,Oceania,Australia and New Zealand
+CY,CYP,Cyprus,Nicosia,35,33,UTC+02,EUR,Europe,Southern Europe
+CZ,CZE,Czechia,Prague,49.75,15.5,UTC+01,CZK,Europe,Central Europe
+DE,DEU,Germany,Berlin,51,9,UTC+01,EUR,Europe,Western Europe
+DJ,DJI,Djibouti,Djibouti,11.5,43,UTC+03,DJF,Africa,Eastern Africa
+DK,DNK,Denmark,Copenhagen,56,10,UTC+01,DKK,Europe,Northern Europe
+DM,DMA,Dominica,Roseau,15.41666666,-61.33333333,UTC-04,XCD,Americas,Caribbean
+DO,DOM,Dominican Republic,Santo Domingo,19,-70.66666666,UTC-05,DOP,Americas,Caribbean
+DZ,DZA,Algeria,Algiers,28,3,UTC+00,DZD,Africa,Northern Africa
+EC,ECU,Ecuador,Quito,-2,-77.5,UTC-05,USD,Americas,South America
+EE,EST,Estonia,Tallinn,59,26,UTC+02,EUR,Europe,Northern Europe
+EG,EGY,Egypt,Cairo,27,30,UTC+02,EGP,Africa,Northern Africa
+EH,ESH,Western Sahara,El Aaiún,24.5,-13,UTC-01,DZD,Africa,Northern Africa
+ER,ERI,Eritrea,Asmara,15,39,UTC+03,ERN,Africa,Eastern Africa
+ES,ESP,Spain,Madrid,40,-4,UTC+00,EUR,Europe,Southern Europe
+ET,ETH,Ethiopia,Addis Ababa,8,38,UTC+03,ETB,Africa,Eastern Africa
+FI,FIN,Finland,Helsinki,64,26,UTC+02,EUR,Europe,Northern Europe
+FJ,FJI,Fiji,Suva,-18,175,UTC+12,FJD,Oceania,Melanesia
+FK,FLK,Falkland Islands,Stanley,-51.75,-59,UTC-04,FKP,Americas,South America
+FM,FSM,Micronesia,Palikir,6.91666666,158.25,UTC+11,,Oceania,Micronesia
+FO,FRO,Faroe Islands,Tórshavn,62,-7,UTC+00,DKK,Europe,Northern Europe
+FR,FRA,France,Paris,46,2,UTC+00,EUR,Europe,Western Europe
+GA,GAB,Gabon,Libreville,-1,11.75,UTC+01,XAF,Africa,Middle Africa
+GB,GBR,United Kingdom,London,54,-2,UTC+00,GBP,Europe,Northern Europe
+GD,GRD,Grenada,St. George's,12.11666666,-61.66666666,UTC-04,XCD,Americas,Caribbean
+GE,GEO,Georgia,Tbilisi,42,43.5,UTC+03,GEL,Asia,Western Asia
+GF,GUF,French Guiana,Cayenne,4,-53,UTC-04,EUR,Americas,South America
+GG,GGY,Guernsey,St. Peter Port,49.46666666,-2.58333333,UTC+00,GBP,Europe,Northern Europe
+GH,GHA,Ghana,Accra,8,-2,UTC+00,GHS,Africa,Western Africa
+GI,GIB,Gibraltar,Gibraltar,36.13333333,-5.35,UTC+00,GIP,Europe,Southern Europe
+GL,GRL,Greenland,Nuuk,72,-40,UTC-03,DKK,Americas,North America
+GM,GMB,Gambia,Banjul,13.46666666,-16.56666666,UTC-01,GMD,Africa,Western Africa
+GN,GIN,Guinea,Conakry,11,-10,UTC-01,GNF,Africa,Western Africa
+GP,GLP,Guadeloupe,Basse-Terre,16.25,-61.583333,UTC-04,EUR,Americas,Caribbean
+GQ,GNQ,Equatorial Guinea,Malabo,2,10,UTC+01,XAF,Africa,Middle Africa
+GR,GRC,Greece,Athens,39,22,UTC+01,EUR,Europe,Southern Europe
+GS,SGS,South Georgia,King Edward Point,-54.5,-37,UTC-02,SHP,Antarctic,
+GT,GTM,Guatemala,Guatemala City,15.5,-90.25,UTC-06,GTQ,Americas,Central America
+GU,GUM,Guam,Hagåtña,13.46666666,144.78333333,UTC+10,USD,Oceania,Micronesia
+GW,GNB,Guinea-Bissau,Bissau,12,-15,UTC-01,XOF,Africa,Western Africa
+GY,GUY,Guyana,Georgetown,5,-59,UTC-04,GYD,Americas,South America
+HK,HKG,Hong Kong,City of Victoria,22.267,114.188,UTC+08,HKD,Asia,Eastern Asia
+HM,HMD,Heard Island and McDonald Islands,,-53.1,72.51666666,UTC+05,,Antarctic,
+HN,HND,Honduras,Tegucigalpa,15,-86.5,UTC-06,HNL,Americas,Central America
+HR,HRV,Croatia,Zagreb,45.16666666,15.5,UTC+01,EUR,Europe,Southeast Europe
+HT,HTI,Haiti,Port-au-Prince,19,-72.41666666,UTC-05,HTG,Americas,Caribbean
+HU,HUN,Hungary,Budapest,47,20,UTC+01,HUF,Europe,Central Europe
+ID,IDN,Indonesia,Jakarta,-5,120,UTC+08,IDR,Asia,South-Eastern Asia
+IE,IRL,Ireland,Dublin,53,-8,UTC-01,EUR,Europe,Northern Europe
+IL,ISR,Israel,Jerusalem,31.47,35.13,UTC+02,ILS,Asia,Western Asia
+IM,IMN,Isle of Man,Douglas,54.25,-4.5,UTC+00,GBP,Europe,Northern Europe
+IN,IND,India,New Delhi,20,77,UTC+05,INR,Asia,Southern Asia
+IO,IOT,British Indian Ocean Territory,Diego Garcia,-6,71.5,UTC+05,USD,Africa,Eastern Africa
+IQ,IRQ,Iraq,Baghdad,33,44,UTC+03,IQD,Asia,Western Asia
+IR,IRN,Iran,Tehran,32,53,UTC+04,IRR,Asia,Southern Asia
+IS,ISL,Iceland,Reykjavik,65,-18,UTC-01,ISK,Europe,Northern Europe
+IT,ITA,Italy,Rome,42.83333333,12.83333333,UTC+01,EUR,Europe,Southern Europe
+JE,JEY,Jersey,Saint Helier,49.25,-2.16666666,UTC+00,GBP,Europe,Northern Europe
+JM,JAM,Jamaica,Kingston,18.25,-77.5,UTC-05,JMD,Americas,Caribbean
+JO,JOR,Jordan,Amman,31,36,UTC+02,JOD,Asia,Western Asia
+JP,JPN,Japan,Tokyo,36,138,UTC+09,JPY,Asia,Eastern Asia
+KE,KEN,Kenya,Nairobi,1,38,UTC+03,KES,Africa,Eastern Africa
+KG,KGZ,Kyrgyzstan,Bishkek,41,75,UTC+05,KGS,Asia,Central Asia
+KH,KHM,Cambodia,Phnom Penh,13,105,UTC+07,KHR,Asia,South-Eastern Asia
+KI,KIR,Kiribati,South Tarawa,1.41666666,173,UTC+12,AUD,Oceania,Micronesia
+KM,COM,Comoros,Moroni,-12.16666666,44.25,UTC+03,KMF,Africa,Eastern Africa
+KN,KNA,Saint Kitts and Nevis,Basseterre,17.33333333,-62.75,UTC-04,XCD,Americas,Caribbean
+KP,PRK,North Korea,Pyongyang,40,127,UTC+08,KPW,Asia,Eastern Asia
+KR,KOR,South Korea,Seoul,37,127.5,UTC+08,KRW,Asia,Eastern Asia
+KW,KWT,Kuwait,Kuwait City,29.5,45.75,UTC+03,KWD,Asia,Western Asia
+KY,CYM,Cayman Islands,George Town,19.5,-80.5,UTC-05,KYD,Americas,Caribbean
+KZ,KAZ,Kazakhstan,Astana,48,68,UTC+05,KZT,Asia,Central Asia
+LA,LAO,Laos,Vientiane,18,105,UTC+07,LAK,Asia,South-Eastern Asia
+LB,LBN,Lebanon,Beirut,33.83333333,35.83333333,UTC+02,LBP,Asia,Western Asia
+LC,LCA,Saint Lucia,Castries,13.88333333,-60.96666666,UTC-04,XCD,Americas,Caribbean
+LI,LIE,Liechtenstein,Vaduz,47.26666666,9.53333333,UTC+01,CHF,Europe,Western Europe
+LK,LKA,Sri Lanka,Colombo,7,81,UTC+05,LKR,Asia,Southern Asia
+LR,LBR,Liberia,Monrovia,6.5,-9.5,UTC-01,LRD,Africa,Western Africa
+LS,LSO,Lesotho,Maseru,-29.5,28.5,UTC+02,LSL,Africa,Southern Africa
+LT,LTU,Lithuania,Vilnius,56,24,UTC+02,EUR,Europe,Northern Europe
+LU,LUX,Luxembourg,Luxembourg,49.75,6.16666666,UTC+00,EUR,Europe,Western Europe
+LV,LVA,Latvia,Riga,57,25,UTC+02,EUR,Europe,Northern Europe
+LY,LBY,Libya,Tripoli,25,17,UTC+01,LYD,Africa,Northern Africa
+MA,MAR,Morocco,Rabat,32,-5,UTC+00,MAD,Africa,Northern Africa
+MC,MCO,Monaco,Monaco,43.73333333,7.4,UTC+00,EUR,Europe,Western Europe
+MD,MDA,Moldova,Chișinău,47,29,UTC+02,MDL,Europe,Eastern Europe
+ME,MNE,Montenegro,Podgorica,42.5,19.3,UTC+01,EUR,Europe,Southeast Europe
+MF,MAF,Saint Martin,Marigot,18.08333333,-63.95,UTC-04,EUR,Americas,Caribbean
+MG,MDG,Madagascar,Antananarivo,-20,47,UTC+03,MGA,Africa,Eastern Africa
+MH,MHL,Marshall Islands,Majuro,9,168,UTC+11,USD,Oceania,Micronesia
+MK,MKD,North Macedonia,Skopje,41.83333333,22,UTC+01,MKD,Europe,Southeast Europe
+ML,MLI,Mali,Bamako,17,-4,UTC+00,XOF,Africa,Western Africa
+MM,MMR,Myanmar,Naypyidaw,22,98,UTC+07,MMK,Asia,South-Eastern Asia
+MN,MNG,Mongolia,Ulan Bator,46,105,UTC+07,MNT,Asia,Eastern Asia
+MO,MAC,Macau,,22.16666666,113.55,UTC+08,MOP,Asia,Eastern Asia
+MP,MNP,Northern Mariana Islands,Saipan,15.2,145.75,UTC+10,USD,Oceania,Micronesia
+MQ,MTQ,Martinique,Fort-de-France,14.666667,-61,UTC-04,EUR,Americas,Caribbean
+MR,MRT,Mauritania,Nouakchott,20,-12,UTC-01,MRU,Africa,Western Africa
+MS,MSR,Montserrat,Plymouth,16.75,-62.2,UTC-04,XCD,Americas,Caribbean
+MT,MLT,Malta,Valletta,35.83333333,14.58333333,UTC+01,EUR,Europe,Southern Europe
+MU,MUS,Mauritius,Port Louis,-20.28333333,57.55,UTC+04,MUR,Africa,Eastern Africa
+MV,MDV,Maldives,Malé,3.25,73,UTC+05,MVR,Asia,Southern Asia
+MW,MWI,Malawi,Lilongwe,-13.5,34,UTC+02,MWK,Africa,Eastern Africa
+MX,MEX,Mexico,Mexico City,23,-102,UTC-07,MXN,Americas,North America
+MY,MYS,Malaysia,Kuala Lumpur,2.5,112.5,UTC+08,MYR,Asia,South-Eastern Asia
+MZ,MOZ,Mozambique,Maputo,-18.25,35,UTC+02,MZN,Africa,Eastern Africa
+NA,NAM,Namibia,Windhoek,-22,17,UTC+01,NAD,Africa,Southern Africa
+NC,NCL,New Caledonia,Nouméa,-21.5,165.5,UTC+11,XPF,Oceania,Melanesia
+NE,NER,Niger,Niamey,16,8,UTC+01,XOF,Africa,Western Africa
+NF,NFK,Norfolk Island,Kingston,-29.03333333,167.95,UTC+11,AUD,Oceania,Australia and New Zealand
+NG,NGA,Nigeria,Abuja,10,8,UTC+01,NGN,Africa,Western Africa
+NI,NIC,Nicaragua,Managua,13,-85,UTC-06,NIO,Americas,Central America
+NL,NLD,Netherlands,Amsterdam,52.5,5.75,UTC+00,EUR,Europe,Western Europe
+NO,NOR,Norway,Oslo,62,10,UTC+01,NOK,Europe,Northern Europe
+NP,NPL,Nepal,Kathmandu,28,84,UTC+06,NPR,Asia,Southern Asia
+NR,NRU,Nauru,Yaren,-0.53333333,166.91666666,UTC+11,AUD,Oceania,Micronesia
+NU,NIU,Niue,Alofi,-19.03333333,-169.86666666,UTC-11,NZD,Oceania,Polynesia
+NZ,NZL,New Zealand,Wellington,-41,174,UTC+12,NZD,Oceania,Australia and New Zealand
+OM,OMN,Oman,Muscat,21,57,UTC+04,OMR,Asia,Western Asia
+PA,PAN,Panama,Panama City,9,-80,UTC-05,PAB,Americas,Central America
+PE,PER,Peru,Lima,-10,-76,UTC-05,PEN,Americas,South America
+PF,PYF,French Polynesia,Papeetē,-15,-140,UTC-09,XPF,Oceania,Polynesia
+PG,PNG,Papua New Guinea,Port Moresby,-6,147,UTC+10,PGK,Oceania,Melanesia
+PH,PHL,Philippines,Manila,13,122,UTC+08,PHP,Asia,South-Eastern Asia
+PK,PAK,Pakistan,Islamabad,30,70,UTC+05,PKR,Asia,Southern Asia
+PL,POL,Poland,Warsaw,52,20,UTC+01,PLN,Europe,Central Europe
+PM,SPM,Saint Pierre and Miquelon,Saint-Pierre,46.83333333,-56.33333333,UTC-04,EUR,Americas,North America
+PN,PCN,Pitcairn Islands,Adamstown,-25.06666666,-130.1,UTC-09,NZD,Oceania,Polynesia
+PR,PRI,Puerto Rico,San Juan,18.25,-66.5,UTC-04,USD,Americas,Caribbean
+PS,PSE,Palestine,Ramallah,31.9,35.2,UTC+02,EGP,Asia,Western Asia
+PT,PRT,Portugal,Lisbon,39.5,-8,UTC-01,EUR,Europe,Southern Europe
+PW,PLW,Palau,Ngerulmud,7.5,134.5,UTC+09,USD,Oceania,Micronesia
+PY,PRY,Paraguay,Asunción,-23,-58,UTC-04,PYG,Americas,South America
+QA,QAT,Qatar,Doha,25.5,51.25,UTC+03,QAR,Asia,Western Asia
+RE,REU,Réunion,Saint-Denis,-21.15,55.5,UTC+04,EUR,Africa,Eastern Africa
+RO,ROU,Romania,Bucharest,46,25,UTC+02,RON,Europe,Southeast Europe
+RS,SRB,Serbia,Belgrade,44,21,UTC+01,RSD,Europe,Southeast Europe
+RU,RUS,Russia,Moscow,60,100,UTC+07,RUB,Europe,Eastern Europe
+RW,RWA,Rwanda,Kigali,-2,30,UTC+02,RWF,Africa,Eastern Africa
+SA,SAU,Saudi Arabia,Riyadh,25,45,UTC+03,SAR,Asia,Western Asia
+SB,SLB,Solomon Islands,Honiara,-8,159,UTC+11,SBD,Oceania,Melanesia
+SC,SYC,Seychelles,Victoria,-4.58333333,55.66666666,UTC+04,SCR,Africa,Eastern Africa
+SD,SDN,Sudan,Khartoum,15,30,UTC+02,SDG,Africa,Northern Africa
+SE,SWE,Sweden,Stockholm,62,15,UTC+01,SEK,Europe,Northern Europe
+SG,SGP,Singapore,Singapore,1.36666666,103.8,UTC+07,SGD,Asia,South-Eastern Asia
+SH,SHN,"Saint Helena, Ascension and Tristan da Cunha",Jamestown,-15.95,-5.72,UTC+00,GBP,Africa,Western Africa
+SI,SVN,Slovenia,Ljubljana,46.11666666,14.81666666,UTC+01,EUR,Europe,Central Europe
+SJ,SJM,Svalbard and Jan Mayen,Longyearbyen,78,20,UTC+01,NOK,Europe,Northern Europe
+SK,SVK,Slovakia,Bratislava,48.66666666,19.5,UTC+01,EUR,Europe,Central Europe
+SL,SLE,Sierra Leone,Freetown,8.5,-11.5,UTC-01,SLL,Africa,Western Africa
+SM,SMR,San Marino,City of San Marino,43.76666666,12.41666666,UTC+01,EUR,Europe,Southern Europe
+SN,SEN,Senegal,Dakar,14,-14,UTC-01,XOF,Africa,Western Africa
+SO,SOM,Somalia,Mogadishu,10,49,UTC+03,SOS,Africa,Eastern Africa
+SR,SUR,Suriname,Paramaribo,4,-56,UTC-04,SRD,Americas,South America
+SS,SSD,South Sudan,Juba,7,30,UTC+02,SSP,Africa,Middle Africa
+ST,STP,São Tomé and Príncipe,São Tomé,1,7,UTC+00,STN,Africa,Middle Africa
+SV,SLV,El Salvador,San Salvador,13.83333333,-88.91666666,UTC-06,USD,Americas,Central America
+SX,SXM,Sint Maarten,Philipsburg,18.033333,-63.05,UTC-04,ANG,Americas,Caribbean
+SY,SYR,Syria,Damascus,35,38,UTC+03,SYP,Asia,Western Asia
+SZ,SWZ,Eswatini,Lobamba,-26.5,31.5,UTC+02,SZL,Africa,Southern Africa
+TC,TCA,Turks and Caicos Islands,Cockburn Town,21.75,-71.58333333,UTC-05,USD,Americas,Caribbean
+TD,TCD,Chad,N'Djamena,15,19,UTC+01,XAF,Africa,Middle Africa
+TF,ATF,French Southern and Antarctic Lands,Port-aux-Français,-49.25,69.167,UTC+05,EUR,Antarctic,
+TG,TGO,Togo,Lomé,8,1.16666666,UTC+00,XOF,Africa,Western Africa
+TH,THA,Thailand,Bangkok,15,100,UTC+07,THB,Asia,South-Eastern Asia
+TJ,TJK,Tajikistan,Dushanbe,39,71,UTC+05,TJS,Asia,Central Asia
+TK,TKL,Tokelau,Fakaofo,-9,-172,UTC-11,NZD,Oceania,Polynesia
+TL,TLS,Timor-Leste,Dili,-8.83333333,125.91666666,UTC+08,USD,Asia,South-Eastern Asia
+TM,TKM,Turkmenistan,Ashgabat,40,60,UTC+04,TMT,Asia,Central Asia
+TN,TUN,Tunisia,Tunis,34,9,UTC+01,TND,Africa,Northern Africa
+TO,TON,Tonga,Nuku'alofa,-20,-175,UTC-12,TOP,Oceania,Polynesia
+TR,TUR,Türkiye,Ankara,39,35,UTC+02,TRY,Asia,Western Asia
+TT,TTO,Trinidad and Tobago,Port of Spain,11,-61,UTC-04,TTD,Americas,Caribbean
+TV,TUV,Tuvalu,Funafuti,-8,178,UTC+12,AUD,Oceania,Polynesia
+TW,TWN,Taiwan,Taipei,23.5,121,UTC+08,TWD,Asia,Eastern Asia
+TZ,TZA,Tanzania,Dodoma,-6,35,UTC+02,TZS,Africa,Eastern Africa
+UA,UKR,Ukraine,Kyiv,49,32,UTC+02,UAH,Europe,Eastern Europe
+UG,UGA,Uganda,Kampala,1,32,UTC+02,UGX,Africa,Eastern Africa
+UM,UMI,United States Minor Outlying Islands,,19.3,166.633333,UTC+11,USD,Americas,North America
+US,USA,United States,Washington D.C.,38,-97,UTC-06,USD,Americas,North America
+UY,URY,Uruguay,Montevideo,-33,-56,UTC-04,UYU,Americas,South America
+UZ,UZB,Uzbekistan,Tashkent,41,64,UTC+04,UZS,Asia,Central Asia
+VA,VAT,Vatican City,Vatican City,41.9,12.45,UTC+01,EUR,Europe,Southern Europe
+VC,VCT,Saint Vincent and the Grenadines,Kingstown,13.25,-61.2,UTC-04,XCD,Americas,Caribbean
+VE,VEN,Venezuela,Caracas,8,-66,UTC-04,VES,Americas,South America
+VG,VGB,British Virgin Islands,Road Town,18.431383,-64.62305,UTC-04,USD,Americas,Caribbean
+VI,VIR,United States Virgin Islands,Charlotte Amalie,18.35,-64.933333,UTC-04,USD,Americas,Caribbean
+VN,VNM,Vietnam,Hanoi,16.16666666,107.83333333,UTC+07,VND,Asia,South-Eastern Asia
+VU,VUT,Vanuatu,Port Vila,-16,167,UTC+11,VUV,Oceania,Melanesia
+WF,WLF,Wallis and Futuna,Mata-Utu,-13.3,-176.2,UTC-12,XPF,Oceania,Polynesia
+WS,WSM,Samoa,Apia,-13.58333333,-172.33333333,UTC-11,WST,Oceania,Polynesia
+XK,UNK,Kosovo,Pristina,42.666667,21.166667,UTC+01,EUR,Europe,Southeast Europe
+YE,YEM,Yemen,Sana'a,15,48,UTC+03,YER,Asia,Western Asia
+YT,MYT,Mayotte,Mamoudzou,-12.83333333,45.16666666,UTC+03,EUR,Africa,Eastern Africa
+ZA,ZAF,South Africa,Pretoria,-29,24,UTC+02,ZAR,Africa,Southern Africa
+ZM,ZMB,Zambia,Lusaka,-15,30,UTC+02,ZMW,Africa,Eastern Africa
+ZW,ZWE,Zimbabwe,Harare,-20,30,UTC+02,BWP,Africa,Eastern Africa

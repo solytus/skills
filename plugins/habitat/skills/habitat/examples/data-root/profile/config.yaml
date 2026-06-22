@@ -1,0 +1,25 @@
+# Habitat profile config (your data — edit freely). Plain values, hand-editable.
+schema_version: 1
+
+# The `stale` filter on "review the log" flags places not touched in this many days.
+stale_days: 90
+
+# Family locations the family-distance lookup measures to. Names or "lat,lon".
+family_locations:
+  - name: "Family"
+    location: "Chicago, IL"
+
+# --- International extension (optional; absent => generic / disabled) ----------
+
+# Home/earning currency + work time zone feed FX (home-currency cost) + time-zone overlap.
+home_currency: USD
+# work_timezone: "UTC-06"
+
+# Diaspora origins that define "belonging" abroad (optional).
+# belonging_origins: ["IE", "IT"]
+
+# Optional immigration/situation profile. PRESENT => personalized visa/residence scoring;
+# ABSENT => a generic per-country difficulty signal. Agnostic / profile-driven.
+# immigration_profile:
+#   citizenships: ["US"]
+#   goals: ["residency"]    # residency | citizenship | remote-work | business

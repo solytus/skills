@@ -1,0 +1,31 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { marked } from 'marked';
+import { getSkills } from '../../lib/skills.mjs';
+import { GITHUB_OWNER_REPO, MARKETPLACE_NAME } from '../../config.mjs';
+
+export function getStaticPaths() {
+  return getSkills().map((s) => ({ params: { name: s.name }, props: { skill: s } }));
+}
+
+const { skill } = Astro.props;
+const usageHtml = await marked.parse(skill.skillBody || '');
+const installSnippet = `/plugin marketplace add ${GITHUB_OWNER_REPO}\n/plugin install ${skill.name}@${MARKETPLACE_NAME}`;
+---
+
+<StarlightPage frontmatter={{ title: skill.name, description: skill.description }}>
+  <p>
+    <strong>v{skill.version}</strong>
+    {' · '}<a href={`/skills/${skill.name}/changelog/`}>Changelog</a>
+    {skill.license ? <>{' · '}{skill.license}</> : null}
+  </p>
+
+  <p>{skill.description}</p>
+
+  <h2>Install (Claude Code)</h2>
+  <pre><code>{installSnippet}</code></pre>
+
+  <h2>Usage</h2>
+  {/* Rendered from the skill's own SKILL.md — never hand-edited here. */}
+  <div set:html={usageHtml} />
+</StarlightPage>

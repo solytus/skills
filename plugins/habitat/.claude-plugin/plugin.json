@@ -1,0 +1,11 @@
+{
+  "name": "habitat",
+  "version": "1.0.0",
+  "description": "Find & track places to live that fit an evolving preference profile — preference interview, place evaluation, profile-matched shortlists, and a place log. Invoked by name (\"Habitat, ...\").",
+  "author": {
+    "name": "Sean Park",
+    "url": "https://solytus.com"
+  },
+  "homepage": "https://github.com/solytus/solytus",
+  "license": "MIT"
+}

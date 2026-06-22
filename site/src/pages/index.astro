@@ -1,0 +1,62 @@
+---
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { getSkills } from '../lib/skills.mjs';
+import { GITHUB_OWNER_REPO, MARKETPLACE_NAME } from '../config.mjs';
+
+const skills = getSkills();
+const installSnippet = `/plugin marketplace add ${GITHUB_OWNER_REPO}\n/plugin install <skill>@${MARKETPLACE_NAME}`;
+---
+
+<StarlightPage
+  frontmatter={{
+    title: 'Solytus',
+    description: 'Productized Claude Code skills — install them, point them at your own data, make them yours.',
+    template: 'splash',
+    hero: {
+      tagline:
+        'Productized Claude Code skills. The generic logic ships; your config and your data stay yours.',
+      actions: [
+        {
+          text: 'Browse skills',
+          link: skills.length ? `/skills/${skills[0].name}/` : '#skills',
+          variant: 'primary',
+        },
+        {
+          text: 'GitHub',
+          link: `https://github.com/${GITHUB_OWNER_REPO}`,
+          variant: 'minimal',
+        },
+      ],
+    },
+  }}
+>
+  <section id="skills">
+    <h2>Skills</h2>
+    {
+      skills.length ? (
+        <CardGrid>
+          {skills.map((s) => (
+            <LinkCard
+              title={`${s.name} · v${s.version}`}
+              description={s.description}
+              href={`/skills/${s.name}/`}
+            />
+          ))}
+        </CardGrid>
+      ) : (
+        <p>No skills published yet.</p>
+      )
+    }
+  </section>
+
+  <h2>Install</h2>
+  <p>Each skill is a single-skill plugin in the Solytus marketplace. In Claude Code:</p>
+  <pre><code>{installSnippet}</code></pre>
+
+  <p>
+    Built for <strong>Claude Code</strong> first. Skills are pure-Python-standard-library
+    (no dependencies, no build step). See <a href="/the-pattern/">the Solytus pattern</a>
+    for how config and data stay yours.
+  </p>
+</StarlightPage>
