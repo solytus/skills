@@ -1,8 +1,0 @@
-# Cloudflare Pages redirects. Astro copies site/public/* to dist/, so this ships as
-# dist/_redirects and Pages reads it at the edge.
-#
-# Canonical host = apex (solytus.com), matching astro.config.mjs `site`.
-# Redirect www -> apex, preserving path + query (301 permanent).
-# Requires BOTH solytus.com and www.solytus.com to be custom domains on the Pages
-# project. (If you instead add a Cloudflare Redirect Rule, drop this to avoid overlap.)
-https://www.solytus.com/* https://solytus.com/:splat 301
