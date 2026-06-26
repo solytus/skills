@@ -1,0 +1,228 @@
+/* ==========================================================================
+   solytus.css — Solytus brand site
+   Built on the personal design system: monochrome, hairlines, right angles,
+   Schibsted Grotesk + Spline Sans Mono. ALL CAPS for structure, sentence case
+   for body. No accent hue. Portable semantic HTML + CSS.
+
+   Theme: follows prefers-color-scheme by default; an explicit
+   <html data-theme="light|dark"> overrides it (kept for parity, unused in prod).
+
+   Fonts are loaded via <link> in the page <head> (see Layout.astro), not @import.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. PRIMITIVES + non-color tokens
+   -------------------------------------------------------------------------- */
+:root {
+  --gray-0:#FFFFFF; --gray-50:#F7F7F8; --gray-100:#EDEDEF; --gray-200:#DDDDE1;
+  --gray-300:#C7C7CD; --gray-400:#A4A4AD; --gray-500:#7C7C85; --gray-600:#5A5A62;
+  --gray-700:#3F3F45; --gray-800:#26262A; --gray-900:#161618; --gray-950:#0D0D0E;
+  --gray-1000:#000000;
+
+  --font-sans:'Schibsted Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'Spline Sans Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+
+  --tracking-label:0.08em;
+
+  --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem;
+  --space-6:1.5rem; --space-8:2rem; --space-12:3rem; --space-16:4rem;
+  --space-24:6rem; --space-32:8rem;
+
+  --grid-max:1140px;
+  --pad-x:clamp(1.25rem, 5vw, 4rem);
+
+  --dur-fast:120ms; --dur-base:180ms;
+  --ease-out:cubic-bezier(0.2,0,0,1);
+}
+
+/* --------------------------------------------------------------------------
+   2. SEMANTIC TOKENS — light default
+   -------------------------------------------------------------------------- */
+:root, :root[data-theme="light"] {
+  color-scheme:light;
+  --bg:var(--gray-0);
+  --surface:var(--gray-50);
+  --surface-2:var(--gray-100);
+  --border:var(--gray-200);
+  --border-strong:var(--gray-300);
+  --text-primary:var(--gray-900);
+  --text-secondary:var(--gray-600);
+  --text-muted:var(--gray-500);
+  --ink:var(--gray-900);          /* primary action fill */
+  --on-ink:var(--gray-0);
+}
+
+/* Dark — follows the OS when no explicit data-theme is set… */
+@media (prefers-color-scheme:dark) {
+  :root:not([data-theme]) {
+    color-scheme:dark;
+    --bg:var(--gray-950);
+    --surface:var(--gray-900);
+    --surface-2:var(--gray-800);
+    --border:var(--gray-800);
+    --border-strong:var(--gray-700);
+    --text-primary:var(--gray-50);
+    --text-secondary:var(--gray-400);
+    --text-muted:var(--gray-500);
+    --ink:var(--gray-50);
+    --on-ink:var(--gray-950);
+  }
+}
+/* …or when forced by an explicit data-theme. */
+:root[data-theme="dark"] {
+  color-scheme:dark;
+  --bg:var(--gray-950);
+  --surface:var(--gray-900);
+  --surface-2:var(--gray-800);
+  --border:var(--gray-800);
+  --border-strong:var(--gray-700);
+  --text-primary:var(--gray-50);
+  --text-secondary:var(--gray-400);
+  --text-muted:var(--gray-500);
+  --ink:var(--gray-50);
+  --on-ink:var(--gray-950);
+}
+
+/* --------------------------------------------------------------------------
+   3. RESET
+   -------------------------------------------------------------------------- */
+*,*::before,*::after { box-sizing:border-box; }
+html { -webkit-text-size-adjust:100%; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text-primary);
+  font-family:var(--font-sans);
+  font-size:1rem;
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  transition:background var(--dur-base) var(--ease-out), color var(--dur-base) var(--ease-out);
+}
+h1,h2,h3,h4,p { margin:0; }
+a { color:inherit; text-decoration:none; }
+img,svg { display:block; max-width:100%; }
+ul { margin:0; padding:0; list-style:none; }
+
+:focus-visible { outline:2px solid var(--text-primary); outline-offset:3px; }
+
+/* --------------------------------------------------------------------------
+   4. TYPE HELPERS
+   -------------------------------------------------------------------------- */
+.label {
+  font-family:var(--font-mono); font-size:.75rem; line-height:1;
+  letter-spacing:var(--tracking-label); text-transform:uppercase;
+  color:var(--text-muted); font-weight:500;
+}
+.mono { font-family:var(--font-mono); }
+.lede { color:var(--text-secondary); }
+.lede b, .lede strong { color:var(--text-primary); font-weight:600; }
+
+/* --------------------------------------------------------------------------
+   5. LAYOUT
+   -------------------------------------------------------------------------- */
+.wrap { width:100%; max-width:var(--grid-max); margin-inline:auto; padding-inline:var(--pad-x); }
+.site { display:flex; flex-direction:column; min-height:100vh; }
+
+/* --------------------------------------------------------------------------
+   6. SITE NAV
+   -------------------------------------------------------------------------- */
+.nav {
+  position:sticky; top:0; z-index:20;
+  border-bottom:1px solid var(--border);
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:saturate(180%) blur(8px);
+}
+.nav__in { display:flex; align-items:center; justify-content:space-between; height:64px; }
+.wordmark {
+  font-family:var(--font-sans); font-weight:700; font-size:1rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--text-primary);
+}
+.nav__links { display:flex; align-items:center; gap:clamp(1rem,3vw,2rem); }
+.nav__link {
+  font-family:var(--font-mono); font-size:.75rem; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--text-secondary);
+  transition:color var(--dur-fast) var(--ease-out);
+}
+.nav__link:hover { color:var(--text-primary); }
+
+/* --------------------------------------------------------------------------
+   7. BUTTONS
+   -------------------------------------------------------------------------- */
+.btn {
+  font-family:var(--font-sans); font-weight:600; font-size:.8125rem;
+  text-transform:uppercase; letter-spacing:.06em; line-height:1;
+  display:inline-flex; align-items:center; justify-content:center; gap:.5rem;
+  height:44px; padding:0 1.5rem; border:1px solid transparent; cursor:pointer;
+  white-space:nowrap;
+  transition:background var(--dur-fast) var(--ease-out),
+             border-color var(--dur-fast) var(--ease-out),
+             color var(--dur-fast) var(--ease-out);
+}
+.btn--sm { height:36px; padding:0 1rem; font-size:.75rem; }
+.btn--primary { background:var(--ink); color:var(--on-ink); }
+.btn--primary:hover { background:var(--text-secondary); }
+.btn--primary:active { transform:translateY(1px); }
+.btn--secondary { background:transparent; color:var(--text-primary); border-color:var(--border-strong); }
+.btn--secondary:hover { background:var(--surface-2); }
+.btn--block { width:100%; }
+.btn:focus-visible { outline:2px solid var(--text-primary); outline-offset:2px; }
+
+/* text CTA — "Browse Habitat →" / "Details →" */
+.textcta {
+  font-family:var(--font-sans); font-weight:600; font-size:.875rem;
+  text-transform:uppercase; letter-spacing:.05em; color:var(--text-primary);
+  display:inline-flex; align-items:center; gap:.5rem;
+  border-bottom:1px solid var(--border-strong); padding-bottom:2px;
+  transition:gap var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.textcta:hover { gap:.75rem; border-color:var(--text-primary); }
+
+/* --------------------------------------------------------------------------
+   8. BADGE
+   -------------------------------------------------------------------------- */
+.badge {
+  font-family:var(--font-mono); font-size:.6875rem; font-weight:500; letter-spacing:.06em;
+  text-transform:uppercase; padding:3px 8px; border:1px solid var(--border);
+  color:var(--text-secondary); background:var(--surface);
+  display:inline-flex; align-items:center; gap:6px;
+}
+
+/* --------------------------------------------------------------------------
+   9. CODE BLOCK + COPY
+   -------------------------------------------------------------------------- */
+.cmd {
+  display:flex; align-items:stretch; border:1px solid var(--border-strong);
+  background:var(--surface); width:100%;
+}
+.cmd__body { display:flex; align-items:center; gap:.75rem; padding:0 1rem; min-height:48px; flex:1; min-width:0; }
+.cmd__prompt { color:var(--text-muted); font-family:var(--font-mono); font-size:.875rem; user-select:none; }
+.cmd__text {
+  font-family:var(--font-mono); font-size:.875rem; color:var(--text-primary);
+  overflow-x:auto; white-space:nowrap; padding:.5rem 0; flex:1; min-width:0;
+  scrollbar-width:thin;
+}
+.cmd__copy {
+  flex:none; display:inline-flex; align-items:center; gap:.5rem;
+  font-family:var(--font-mono); font-size:.6875rem; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--text-secondary); background:transparent; border:0;
+  border-left:1px solid var(--border-strong); padding:0 1rem; cursor:pointer;
+  transition:background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.cmd__copy:hover { background:var(--surface-2); color:var(--text-primary); }
+.cmd__copy[data-copied="true"] { color:var(--text-primary); }
+.cmd__copy svg { width:14px; height:14px; stroke:currentColor; fill:none; stroke-width:1.75; }
+
+/* --------------------------------------------------------------------------
+   10. UTIL
+   -------------------------------------------------------------------------- */
+.skip {
+  position:absolute; left:-9999px; top:0; z-index:100;
+  background:var(--ink); color:var(--on-ink); padding:.75rem 1rem;
+  font-family:var(--font-mono); font-size:.75rem; letter-spacing:.06em; text-transform:uppercase;
+}
+.skip:focus { left:.5rem; top:.5rem; }
+
+@media (prefers-reduced-motion:reduce) {
+  *,*::before,*::after { transition-duration:.01ms !important; animation-duration:.01ms !important; scroll-behavior:auto !important; }
+}

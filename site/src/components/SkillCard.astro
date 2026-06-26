@@ -1,0 +1,36 @@
+---
+import Command from './Command.astro';
+import { MARKETPLACE_NAME } from '../config.mjs';
+
+interface Props {
+  skill: {
+    name: string;
+    version: string;
+    cardDescription: string;
+  };
+}
+const { skill } = Astro.props;
+const display = skill.name.charAt(0).toUpperCase() + skill.name.slice(1);
+const installCmd = `/plugin install ${skill.name}@${MARKETPLACE_NAME}`;
+---
+
+<article class="card" aria-labelledby={`card-${skill.name}`}>
+  <div class="card__main">
+    <div class="card__top">
+      <h3 id={`card-${skill.name}`}>{display}</h3>
+      <span class="badge">v{skill.version}</span>
+    </div>
+    <p class="card__desc">{skill.cardDescription}</p>
+    <div class="card__install">
+      <span class="label">Install</span>
+      <Command
+        text={installCmd}
+        id={`cmd-install-${skill.name}`}
+        label={`Copy ${display} install command`}
+      />
+    </div>
+  </div>
+  <div class="card__cta">
+    <a class="textcta" href={`/skills/${skill.name}/`}>Details <span aria-hidden="true">&rarr;</span></a>
+  </div>
+</article>

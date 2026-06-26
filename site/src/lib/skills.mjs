@@ -1,6 +1,7 @@
 // Build-time skill discovery — the single source that makes the site regenerate
 // from the repo. Reads every plugins/<name>/ and returns its manifest + skill body
-// + changelog. Adding a new plugin requires ZERO edits here or anywhere in site/.
+// + editorial + changelog. Adding a new plugin requires ZERO edits here or anywhere
+// in site/.
 //
 // Resolution is anchored to this file's location (import.meta.url), so it works
 // the same whether called from astro.config.mjs or from a page, regardless of cwd.
@@ -19,8 +20,42 @@ function stripFrontmatter(raw) {
 }
 
 /**
+ * Minimal frontmatter reader for plugins/<skill>/overview.md.
+ * Parses simple single-line `key: value` pairs from the leading `---` fence
+ * (value = rest of line, so colons survive; surrounding quotes stripped). Editorial
+ * frontmatter values are single-line by convention — no block scalars needed. Returns
+ * { data, body }; body is the markdown after the fence.
+ */
+function parseOverview(raw) {
+  const m = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  if (!m) return { data: {}, body: raw.trim() };
+  const data = {};
+  for (const line of m[1].split('\n')) {
+    const kv = line.match(/^([A-Za-z][\w-]*):\s*(.*)$/);
+    if (!kv) continue;
+    let v = kv[2].trim();
+    if (
+      (v.startsWith('"') && v.endsWith('"')) ||
+      (v.startsWith("'") && v.endsWith("'"))
+    ) {
+      v = v.slice(1, -1);
+    }
+    data[kv[1]] = v;
+  }
+  return { data, body: m[2].trim() };
+}
+
+/** First dated release in a Keep-a-Changelog file: `## [x.y.z] - YYYY-MM-DD`.
+ *  Skips an undated `## [Unreleased]` heading. */
+function latestRelease(changelog) {
+  const m = changelog.match(/^##\s*\[([^\]]+)\]\s*-\s*(\d{4}-\d{2}-\d{2})/m);
+  return m ? { version: m[1], date: m[2] } : null;
+}
+
+/**
  * @returns {Array<{name:string,version:string,description:string,homepage:string,
- *   license:string,skillBody:string,changelog:string}>}
+ *   license:string,skillBody:string,changelog:string,tagline:string,
+ *   cardDescription:string,overviewBody:string,latestVersion:string,latestDate:string}>}
  */
 export function getSkills() {
   if (!existsSync(PLUGINS_DIR)) return [];
@@ -38,20 +73,43 @@ export function getSkills() {
       continue; // a malformed manifest shouldn't take the whole site down
     }
     const name = manifest.name || entry.name;
+    const description = manifest.description || '';
     const skillMdPath = join(pdir, 'skills', name, 'SKILL.md');
     const changelogPath = join(pdir, 'CHANGELOG.md');
+    const overviewPath = join(pdir, 'overview.md');
+
+    // Per-skill editorial — kept OUT of SKILL.md so the runtime skill file isn't
+    // bloated with marketing copy. Absent overview.md degrades gracefully.
+    let tagline = '';
+    let cardDescription = description;
+    let overviewBody = '';
+    if (existsSync(overviewPath)) {
+      const { data, body } = parseOverview(readFileSync(overviewPath, 'utf8'));
+      tagline = data.tagline || '';
+      cardDescription = data.cardDescription || description;
+      overviewBody = body;
+    }
+
+    const changelog = existsSync(changelogPath)
+      ? readFileSync(changelogPath, 'utf8')
+      : '';
+    const rel = latestRelease(changelog);
+
     out.push({
       name,
       version: manifest.version || '0.0.0',
-      description: manifest.description || '',
+      description,
       homepage: manifest.homepage || '',
       license: manifest.license || '',
       skillBody: existsSync(skillMdPath)
         ? stripFrontmatter(readFileSync(skillMdPath, 'utf8'))
         : '',
-      changelog: existsSync(changelogPath)
-        ? readFileSync(changelogPath, 'utf8')
-        : '',
+      changelog,
+      tagline,
+      cardDescription,
+      overviewBody,
+      latestVersion: rel ? rel.version : manifest.version || '0.0.0',
+      latestDate: rel ? rel.date : '',
     });
   }
   out.sort((a, b) => a.name.localeCompare(b.name));

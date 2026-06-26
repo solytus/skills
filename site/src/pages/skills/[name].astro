@@ -1,5 +1,6 @@
 ---
-import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import Layout from '../../layouts/Layout.astro';
+import Command from '../../components/Command.astro';
 import { marked } from 'marked';
 import { getSkills } from '../../lib/skills.mjs';
 import { GITHUB_OWNER_REPO, MARKETPLACE_NAME } from '../../config.mjs';
@@ -9,23 +10,144 @@ export function getStaticPaths() {
 }
 
 const { skill } = Astro.props;
-const usageHtml = await marked.parse(skill.skillBody || '');
-const installSnippet = `/plugin marketplace add ${GITHUB_OWNER_REPO}\n/plugin install ${skill.name}@${MARKETPLACE_NAME}`;
+const display = skill.name.charAt(0).toUpperCase() + skill.name.slice(1);
+const marketplaceCmd = `/plugin marketplace add ${GITHUB_OWNER_REPO}`;
+const installCmd = `/plugin install ${skill.name}@${MARKETPLACE_NAME}`;
+const repoSubtreeUrl = `https://github.com/${GITHUB_OWNER_REPO}/tree/main/plugins/${skill.name}`;
+const changelogUrl = `https://github.com/${GITHUB_OWNER_REPO}/blob/main/plugins/${skill.name}/CHANGELOG.md`;
+
+// Editorial "why" — the maker's story, rendered from plugins/<skill>/overview.md.
+// Absent overview → empty → the editorial section is omitted (graceful fallback).
+const editorialHtml = skill.overviewBody ? await marked.parse(skill.overviewBody) : '';
 ---
 
-<StarlightPage frontmatter={{ title: skill.name, description: skill.description }}>
-  <p>
-    <strong>v{skill.version}</strong>
-    {' · '}<a href={`/skills/${skill.name}/changelog/`}>Changelog</a>
-    {skill.license ? <>{' · '}{skill.license}</> : null}
-  </p>
+<Layout title={`${display} — Solytus`} description={skill.description}>
+  <!-- HEADER: name + tagline -->
+  <section class="detail-head" aria-labelledby="skill-name">
+    <div class="wrap">
+      <div class="detail-title">
+        <h1 id="skill-name">{display}</h1>
+      </div>
+      {skill.tagline && <p class="detail-tag">{skill.tagline}</p>}
+    </div>
+  </section>
 
-  <p>{skill.description}</p>
+  <!-- INSTALL BAR -->
+  <div class="wrap">
+    <section class="install-bar" aria-label="Install">
+      <div class="install-bar__row">
+        <h2 class="label">Install</h2>
+        {skill.description && <p class="panel__desc">{skill.description}</p>}
+        <div class="install-steps">
+          <div class="install-step">
+            <span class="install-step__cap">First (one-time) — add the marketplace</span>
+            <Command text={marketplaceCmd} id="cmd-marketplace" label="Copy marketplace command" />
+          </div>
+          <div class="install-step">
+            <span class="install-step__cap">Then — install {display}</span>
+            <Command text={installCmd} id="cmd-install" label={`Copy ${display} install command`} />
+          </div>
+        </div>
+      </div>
+      <div class="install-bar__row install-bar__row--meta">
+        <ul class="detail-meta">
+          <li>Claude skill</li>
+          {skill.license && <li>{skill.license} licensed</li>}
+          <li><a href={repoSubtreeUrl}>GitHub <span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+      <div class="install-bar__row">
+        <h3 class="label">Version history</h3>
+        <div class="changelog">
+          <div class="changelog-row">
+            <div class="changelog__row" style="flex:0 0 auto;">
+              <span class="v">v{skill.latestVersion}</span>
+              {skill.latestDate && <span class="d" style="margin-left:1rem;">{skill.latestDate}</span>}
+            </div>
+            <a class="textcta" href={changelogUrl}>View full changelog <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <h2>Install (Claude Code)</h2>
-  <pre><code>{installSnippet}</code></pre>
+  <!-- EDITORIAL "WHY" — filled from plugins/<skill>/overview.md at build time -->
+  {
+    editorialHtml && (
+      <div class="wrap">
+        <div class="detail-body">
+          <article class="editorial" set:html={editorialHtml} />
+        </div>
+      </div>
+    )
+  }
+</Layout>
 
-  <h2>Usage</h2>
-  {/* Rendered from the skill's own SKILL.md — never hand-edited here. */}
-  <div set:html={usageHtml} />
-</StarlightPage>
+<style is:global>
+  /* ---- detail header ---- */
+  .detail-head { padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(0.75rem, 2vw, 1.25rem); text-align: center; }
+  .detail-title { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .detail-title h1 {
+    font-family: var(--font-sans); font-weight: 800; text-transform: uppercase; letter-spacing: -0.01em;
+    font-size: clamp(1.75rem, 5.6vw, 3.5rem); line-height: .95;
+  }
+  .detail-tag {
+    margin-top: 1.25rem; font-size: clamp(1.125rem, 2.2vw, 1.5rem); line-height: 1.4;
+    color: var(--text-secondary); max-width: none; white-space: nowrap; text-wrap: nowrap; margin-inline: auto;
+  }
+  .detail-meta { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: flex-start; }
+  .detail-meta li {
+    font-family: var(--font-mono); font-size: .75rem; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--text-muted); white-space: nowrap;
+  }
+  .detail-meta a { color: var(--text-secondary); transition: color var(--dur-fast) var(--ease-out); }
+  .detail-meta a:hover { color: var(--text-primary); }
+
+  /* ---- install bar ---- */
+  .install-bar {
+    border: 1px solid var(--border-strong); background: var(--surface);
+    margin-block: clamp(0.5rem, 2vw, 1.5rem) clamp(1.25rem, 3vw, 2rem);
+  }
+  .install-bar__row { padding: clamp(1.5rem, 3vw, 2rem); }
+  .install-bar__row + .install-bar__row { border-top: 1px solid var(--border-strong); }
+  .install-bar__row--meta { border-top: none !important; padding-top: 0; }
+  .install-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem; }
+  .changelog-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+  @media (max-width: 640px) { .install-steps { grid-template-columns: 1fr; } }
+
+  /* ---- body: single wide editorial column ---- */
+  .detail-body { padding-block: clamp(0.5rem, 1.5vw, 0.75rem) clamp(3rem, 7vw, 5rem); }
+
+  /* editorial "why" — rendered from overview.md markdown (h2 + p + inline code) */
+  .editorial { max-width: none; }
+  .editorial h2 {
+    display: block; font-family: var(--font-sans); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .02em; font-size: 1.5rem; line-height: 1.2; color: var(--text-primary);
+    margin-bottom: 1.5rem; max-width: 24ch; text-wrap: balance;
+  }
+  .editorial h2 + h2, .editorial p + h2 { margin-top: 2.75rem; }
+  .editorial p { font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.4rem; }
+  .editorial code { font-family: var(--font-mono); }
+
+  /* functional install bar internals */
+  .install-bar .label { display: block; margin-bottom: 1rem; }
+  .panel__desc { font-size: .9375rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1.25rem; }
+  .install-step { display: flex; flex-direction: column; gap: .5rem; }
+  .install-step__cap {
+    font-family: var(--font-mono); font-size: .6875rem; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  /* keep install commands fully visible */
+  .install-bar .cmd__text { font-size: .8125rem; white-space: normal; overflow-x: visible; word-break: break-word; line-height: 1.45; }
+  .install-bar .cmd__body { align-items: center; padding-block: .5rem; }
+  .install-bar .cmd__copy { padding: 0 .75rem; }
+  .install-bar .cmd__copy .cmd__copy-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .changelog { display: flex; flex-direction: column; gap: .875rem; }
+  .changelog__row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+  .changelog__row .v { font-family: var(--font-sans); font-weight: 700; text-transform: uppercase; letter-spacing: .02em; font-size: .875rem; }
+  .changelog__row .d { font-family: var(--font-mono); font-size: .75rem; color: var(--text-muted); }
+
+  @media (max-width: 860px) {
+    .detail-tag { white-space: normal; text-wrap: balance; max-width: 32ch; }
+  }
+</style>

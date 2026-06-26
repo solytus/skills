@@ -1,0 +1,77 @@
+---
+import '../styles/solytus.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'Solytus is an umbrella for things I build and open up — currently productized Claude Code skills. Install-first, open source, yours to keep.',
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap"
+    />
+  </head>
+  <body class="site">
+    <a class="skip" href="#main">Skip to content</a>
+    <Nav />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Copy-to-clipboard for every `.cmd` block. Each button's data-copy points at
+      // a unique code element id; on success the label flips to "Copied" briefly.
+      document.querySelectorAll('[data-copy]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const sel = btn.getAttribute('data-copy');
+          const src = sel ? document.querySelector(sel) : null;
+          if (!src) return;
+          const text = (src.textContent || '').trim();
+          const label = btn.querySelector('.cmd__copy-text');
+          const done = () => {
+            if (!label) return;
+            btn.setAttribute('data-copied', 'true');
+            label.textContent = 'Copied';
+            setTimeout(() => {
+              btn.removeAttribute('data-copied');
+              label.textContent = 'Copy';
+            }, 1600);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done).catch(done);
+          } else {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+              document.execCommand('copy');
+            } catch (e) {
+              /* no-op */
+            }
+            document.body.removeChild(ta);
+            done();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

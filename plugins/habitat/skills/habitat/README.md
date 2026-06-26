@@ -11,7 +11,7 @@ A [Solytus](../../../../README.md) skill. Built for **Claude Code**.
 Install from the **Solytus** plugin marketplace:
 
 ```text
-/plugin marketplace add solytus/solytus
+/plugin marketplace add solytus/skills
 /plugin install habitat@solytus
 ```
 
@@ -29,7 +29,7 @@ python3 scripts/config.py                                    # confirm discovery
 <details><summary>Prefer clone + symlink (for local development)?</summary>
 
 ```bash
-git clone https://github.com/solytus/solytus.git
+git clone https://github.com/solytus/skills.git
 ln -s "$PWD/solytus/plugins/habitat/skills/habitat" ~/.claude/skills/habitat
 cd solytus/plugins/habitat/skills/habitat    # then run the first-run setup above from here
 ```

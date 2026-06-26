@@ -1,0 +1,22 @@
+---
+// A copyable command block (`.cmd`). Base styling lives in solytus.css; per-context
+// tweaks live in the consuming page's styles. Each instance needs a unique `id` so
+// the copy button (wired in Layout.astro) targets the right code element.
+interface Props {
+  text: string;
+  id: string;
+  label: string;
+}
+const { text, id, label } = Astro.props;
+---
+
+<div class="cmd">
+  <div class="cmd__body">
+    <span class="cmd__prompt" aria-hidden="true">$</span>
+    <code class="cmd__text" id={id}>{text}</code>
+  </div>
+  <button class="cmd__copy" type="button" data-copy={`#${id}`} aria-label={label}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11"></rect><path d="M5 15V5a2 2 0 0 1 2-2h8"></path></svg>
+    <span class="cmd__copy-text">Copy</span>
+  </button>
+</div>

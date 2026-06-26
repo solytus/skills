@@ -1,0 +1,45 @@
+---
+import { AUTHOR, CONTACT_EMAIL, LINKEDIN_URL, GITHUB_OWNER } from '../config.mjs';
+
+const linkedinLabel = LINKEDIN_URL.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '');
+---
+
+<footer class="foot" id="contact">
+  <div class="wrap foot__in">
+    <div class="foot__lead">
+      <span class="label">Contact</span>
+      <p class="foot__name">{AUTHOR}</p>
+    </div>
+    <div class="foot__links">
+      <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+      <a href={`https://github.com/${GITHUB_OWNER}`}>github.com/{GITHUB_OWNER}</a>
+      <a href={LINKEDIN_URL}>{linkedinLabel}</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .foot { margin-top: auto; }
+  .foot__in {
+    display: flex; flex-direction: column; gap: 1.5rem; align-items: center;
+    text-align: center; padding-block: clamp(2rem, 4vw, 3rem);
+  }
+  .foot__lead { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+  .foot__name {
+    font-family: var(--font-sans); font-weight: 700; text-transform: uppercase;
+    letter-spacing: .02em; font-size: clamp(1.125rem, 2vw, 1.375rem); line-height: 1;
+    color: var(--text-primary);
+  }
+  .foot__links { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+  .foot__links .label { margin-bottom: .25rem; }
+  .foot a {
+    font-family: var(--font-mono); font-size: .875rem; letter-spacing: .03em;
+    color: var(--text-secondary); white-space: nowrap;
+    transition: color var(--dur-fast) var(--ease-out);
+  }
+  .foot a:hover { color: var(--text-primary); }
+
+  @media (max-width: 640px) {
+    .foot__in { padding-block: 2rem; gap: 1.25rem; }
+  }
+</style>
