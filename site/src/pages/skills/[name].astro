@@ -149,9 +149,10 @@ const editorialHtml = skill.overviewBody ? await marked.parse(skill.overviewBody
   .install-bar .cmd__copy .cmd__copy-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .changelog { display: flex; flex-direction: column; gap: .875rem; }
   .changelog__row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
-  .changelog__row .v { font-family: var(--font-sans); font-weight: 700; text-transform: uppercase; letter-spacing: .02em; font-size: .875rem; }
+  .changelog__row .v { font-family: var(--font-sans); font-weight: 400; text-transform: uppercase; letter-spacing: .02em; font-size: .875rem; }
+  .changelog__row:first-child .v { font-weight: 700; }  /* keep the latest version emphasized */
   .changelog__row .d { font-family: var(--font-mono); font-size: .75rem; color: var(--text-muted); }
-  .changelog__more { margin-top: 1.25rem; }
+  .changelog__more { margin-top: 1.25rem; font-weight: 400; font-size: .75rem; }
 
   @media (max-width: 860px) {
     .detail-tag { white-space: normal; text-wrap: balance; max-width: 32ch; }
