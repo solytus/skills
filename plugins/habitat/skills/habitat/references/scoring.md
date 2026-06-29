@@ -1,10 +1,9 @@
 # Headline fit number (0–100)
 
-One headline number per evaluation, produced by qualitative reasoning — **no
-per-dimension math**. Two goals in tension: it must **differentiate** places
-(anti-clustering, Bet 2) and **mean the same thing across years** (anti-drift,
-forever-tool). The fixed rubric is the durable yardstick; the ranking check fights
-clustering.
+One headline number per evaluation, produced by qualitative reasoning — **no per-dimension
+math**. Two goals in tension: it must **differentiate** places (anti-clustering) and **mean
+the same thing across years** (anti-drift). The fixed rubric is the durable yardstick; the
+ranking check fights clustering.
 
 ## Fixed anchor rubric
 
@@ -61,9 +60,8 @@ Residence-pathway feasibility **gates** the verdict (a great-fit country with no
 `Pathway-blocked`). **Short-stay travel access (passport index) never touches `fit` or the
 verdict** — it is reported only as a labeled travel signal (visiting ≠ residing).
 
-## Calibration step (CP1)
+## Calibration
 
-Once ~3–5 places are evaluated, name 1–2 of them as live anchor references here
-(e.g. "Tacoma = 72: strong walkability, mid healthcare"). A known CP1 task, not a V1
-blocker. If across ~10 evaluations numbers cluster within ±10 and can't be ranked,
-that is the Bet 2 / F2 signal — escalate, don't paper over it.
+Once ~3–5 places are evaluated, name 1–2 of them as live anchor references here (e.g. "Tacoma
+= 72: strong walkability, mid healthcare"). If across ~10 evaluations numbers cluster within
+±10 and can't be ranked, surface that to the user — don't paper over it.

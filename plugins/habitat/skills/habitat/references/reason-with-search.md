@@ -28,10 +28,10 @@ invent numbers, and do not present a city-level figure as if it were neighborhoo
 
 ## Token discipline (the dominant per-eval cost)
 
-Reason-with-search is ~40k of a ~60k single-evaluation budget. For each dimension:
-**search → fetch the most targeted page(s) → extract** — never WebFetch broad pages and
-dump them into context. Prefer a focused search result over a sprawling source page;
-cap fetches per dimension. This is the single biggest lever on the 30k/50k token anchors.
+Reason-with-search is the largest share of a single evaluation's token budget. For each
+dimension: **search → fetch the most targeted page(s) → extract** — never WebFetch broad pages
+and dump them into context. Prefer a focused search result over a sprawling source page, and cap
+fetches per dimension. This is the single biggest lever on per-eval cost.
 
 ## Default source hints
 

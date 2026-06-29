@@ -54,7 +54,7 @@ The data root is resolved on every run by `scripts/config.py`: `HABITAT_DATA_ROO
 
 Pure Python 3 stdlib — no build, no deps. From this dir:
 
-- **All tests:** `python3 -m unittest discover -s scripts/tests -p 'test_*.py'` (241)
+- **All tests:** `python3 -m unittest discover -s scripts/tests -p 'test_*.py'`
 - **One file:** `python3 scripts/tests/test_cost.py -v`
 - **Live run:** `set -a && . ./secrets.env && set +a` then run any adapter (`--help` on each).
 - **Verify keys:** `python3 scripts/verify_keys.py` · **Refresh datasets:** `python3 scripts/bundle_datasets.py`

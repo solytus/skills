@@ -1,4 +1,4 @@
-# Surface matching places (UC2)
+# Surface matching places
 
 ## Procedure
 

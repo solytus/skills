@@ -1,15 +1,13 @@
-# Hunt for hidden gems (UC: find what the standard search missed)
+# Hunt for hidden gems
 
 A deliberate hunt for **overlooked** places — small/satellite/twin towns near an anchor — that
-the headline `surface` workflow doesn't generate. Recommended model: **Sonnet** (Opus if pairing
-with deep design reasoning).
+the `surface` workflow doesn't generate. Recommended model: **Sonnet** (Opus if pairing with
+deep design reasoning).
 
 ## When to load this (intent, not keywords)
-Activate whenever the user signals they want to find what we might have **missed / overlooked /
-discounted** — *with or without the word "gems."* Examples: "what are we missing", "any blind
-spots", "are we being too narrow / preemptively discounting", "hidden gems", "under-the-radar /
-off the beaten path", "look harder / dig deeper near X", "smaller towns near X", "did we dismiss
-anything too quickly", "give it a second look", "push the boundaries".
+Activate whenever the user wants to find what we might have **missed, overlooked, or discounted**
+— with or without the word "gems." E.g. "what are we missing", "any blind spots", "are we being
+too narrow", "look harder near X", "smaller towns near X", "did we dismiss anything too quickly".
 
 **Disambiguate from `surface`:** `surface` = generate a fresh shortlist from the profile
 ("top places for me", "surface the West"). `gem-hunt` = find what the standard search *overlooked*

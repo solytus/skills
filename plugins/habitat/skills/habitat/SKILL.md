@@ -10,18 +10,15 @@ description: >-
 # Habitat
 
 A personal forever-tool for finding places to live that fit an evolving preference
-model, with free-tier, API-backed context from country down to property — US at
-city/neighborhood/property grain, plus **international country-grain triage**.
-All state is local and human-readable.
+profile, with free-tier, API-backed context from country down to property — US at
+city/neighborhood/property grain, plus international country-grain triage. All state
+is local and human-readable.
 
-**Status:** Production-tested. Store, schemas, router, cache layer, the workflows, and the
-deterministic helpers are real; **all 6 US cached adapters + 5 utility lookups make live
-free-tier API calls**, plus the **international country-grain backbone** (World Bank adapter +
-country lookups + bundled country/passport datasets). **241 tests.** A few sub-fields are honest
-gaps (humidity, business-formation, provider broadband speeds) — marked, never fabricated. The
-**Reddit** half of Social activates automatically when `REDDIT_*` creds are in `secrets.env`;
-Google News RSS works without keys. Free-tier API keys live in *your* `secrets.env` (never
-committed); the skill degrades gracefully for any key you don't set.
+Free-tier API keys live in your `secrets.env` (never committed). Every adapter degrades
+gracefully when its key is unset, and the skill never fabricates a missing value. Reddit's
+half of Social activates when `REDDIT_*` creds are present; Google News RSS works without
+keys. A few sub-fields are honest gaps (humidity, business formation, broadband speeds) —
+marked, not invented.
 
 ## Config & data root
 
@@ -88,7 +85,7 @@ personalized visa scoring, and the GPI/diaspora data drops are V2.
 - `schemas.md` — data store schemas (profile / place / evaluation / interview), `place_key`, migration policy. **Load with every workflow.**
 - `interview.md` · `evaluate.md` · `surface.md` · `log.md` — the core workflows.
 - `evaluate-country.md` — country-grain triage workflow (international): preference-portability gate, residence-pathway-gated screen verdict, structured backbone + capped reasoned passes.
-- `adapters.md` — the 6 cached adapters + 5 utility lookups (walkability + hazard promoted in Phase 3a) + fallback chains + TTLs + Phase-3 as-built notes.
+- `adapters.md` — the 6 cached adapters + 5 utility lookups, with sources, TTLs, and fallback chains.
 - `scoring.md` — the fixed headline-fit anchor rubric + ranking check.
 - `footer.md` — the compact Sources-footer render spec.
 - `reason-with-search.md` — the reason-with-search scaffold, never-fabricate rule, token discipline, source hints.
@@ -98,30 +95,26 @@ personalized visa scoring, and the GPI/diaspora data drops are V2.
 
 ## Scripts
 
-Deterministic data work (no LLM, no token cost). Python stdlib only; each takes
-`--data-root` and emits JSON to stdout, exiting non-zero with a reason on stderr on
-hard failure.
+Deterministic data work — no LLM, no token cost. Python stdlib only; each takes
+`--data-root`, emits JSON to stdout, and exits non-zero with a reason on stderr on hard
+failure. Every script has `--help`. Adapters and lookups make outbound HTTPS calls, so a
+session needs network for live data — otherwise sources degrade to `unavailable`. Keys load
+from your `secrets.env`; unset keys degrade gracefully, never fabricated.
 
-**Division of labor:** scripts read/write only the **JSON cache** and take **explicit
-CLI args**. Claude reads/writes the human-facing markdown + YAML data files (profile,
-places, evaluations, interviews, `config.yaml`) and passes any needed values to scripts
-as args. One bounded exception: `log_query.py` reads a fixed set of place-frontmatter
-**scalars** (status / verdict / fit / last_touched / level) for the log index — a
-constrained reader, not a general YAML parser. Otherwise scripts never parse YAML/markdown.
+**Division of labor:** scripts read/write only the **JSON cache** and take **explicit CLI
+args**. Claude owns the human-facing markdown + YAML (profile, places, evaluations,
+interviews, `config.yaml`) and passes scripts the values they need. The one bounded
+exception: `log_query.py` reads a fixed set of place-frontmatter scalars (status / verdict /
+fit / last_touched / level) for the log index. Otherwise scripts never parse YAML or markdown.
 
-- `scripts/adapter_base.py` — atomic cache R/W, TTL freshness, 3-tier fallback, record envelope, shared adapter CLI. **Real (tested).**
-- `scripts/placekey.py` — `normalize_name` + `build_place_key` (4-decimal geocode). **Real (tested).**
-- `scripts/render_footer.py` — Sources-footer composer. **Real (tested).**
-- `scripts/log_query.py` — fixed-scalar frontmatter reader + log filters (status / verdict / fit / last_touched / level / stale) + `--find` (dedupe by level+name). **Real (tested).**
-- `scripts/profile_diff.py` — quantifies profile change between two versions (added/removed/changed preferences + `delta_pct`) so F1/F3 falsification is measurable. Takes the two `preferences` lists as JSON args (Claude reads the YAML; the script never parses YAML). **Real (tested).**
-- `scripts/adapters/*.py` — the 6 US cached adapters, all **Real (live API)**. climate=Open-Meteo · cost=Census ACS · safety=FBI CDE (US-only; returns `unavailable` at `country` grain) · airquality=AirNow+Open-Meteo (Open-Meteo path when `grain_class=international`) · dynamism=BLS LAUS · social=Google News RSS (+Reddit when keyed). Plus `scripts/adapters/worldbank.py` — **country-grain workhorse** (World Bank, no auth): economy/labor/cost-coarse/governance(WGI)/internet/health, ISO3, per-indicator fetch, empty→degrade. **Real (live, tested).**
-- `scripts/lookups.py` — US family-distance / internet / airport / walkability / hazard + `place_centroid` + **`nearby_places`** (gem-finder engine: overlooked places within a radius of an anchor, from the bundled gazetteer + ACS `population` column; pure bundled-data, no network). **Real** (keyless APIs + bundled CSVs).
-- `scripts/country_lookups.py` — country-grain lookups: `resolve_country` (identity/centroid/currency/tz), `gpi` (safety), `diaspora` (belonging, origin×dest), `passport` (short-stay TRAVEL access only — firewalled from fit), `fx` (Frankfurter home-currency). **Real (tested);** `gpi`/`diaspora` await verified data drops (see `datasets/SOURCES.md`) and degrade to `unavailable`.
-- `scripts/geo.py` — Census FIPS resolver (lat/lon → state/county/place/tract) + haversine. Shared by cost/dynamism/safety + the distance lookups. **Real (tested).**
-- `scripts/verify_keys.py` — live per-key probe (OK / FAIL / SKIP). `scripts/bundle_datasets.py` — refresh `datasets/` static CSVs: US (OurAirports + Census Gazetteer) and international (`country_centroids.csv` from mledoze/countries, `passport_index.csv` from ilyankou); `--check-stale` reports each dataset's vintage/license from `datasets/SOURCES.md`.
-- `scripts/config.py` — resolve the instance config: data root + `tenant_id` + schema `version` (env → `~/.solytus/habitat/config.yaml` → default). **Real (tested).** `scripts/mcp_mock.py` — a mock MCP layer that wraps the script surface (tenant-scoped, idempotent writes) to validate MCP-readiness without standing up a server. **Real (tested).**
-
-Every script exposes a `--help` CLI; the deterministic helpers are unit-tested under
-`scripts/tests/` (**241 tests**). Free-tier API keys load from your `secrets.env` (set what you
-have; unset keys degrade gracefully — never fabricated). Adapters/lookups make outbound HTTPS
-calls — a session must allow network for live data, else sources degrade to `unavailable`.
+- `scripts/adapter_base.py` — atomic cache R/W, TTL freshness, 3-tier fallback, record envelope, shared adapter CLI.
+- `scripts/placekey.py` — `normalize_name` + `build_place_key` (4-decimal geocode).
+- `scripts/render_footer.py` — Sources-footer composer.
+- `scripts/log_query.py` — frontmatter-scalar reader + log filters (status / verdict / fit / last_touched / level / stale) + `--find` (dedupe by level+name).
+- `scripts/profile_diff.py` — diffs two profile versions (added/removed/changed preferences + `delta_pct`) to measure how far an interview moved the profile. Takes the two `preferences` lists as JSON args.
+- `scripts/adapters/*.py` — the 6 US cached adapters: climate (Open-Meteo) · cost (Census ACS) · safety (FBI CDE, US-only — `unavailable` at country grain) · airquality (AirNow + Open-Meteo, Open-Meteo path when international) · dynamism (BLS LAUS) · social (Google News RSS, plus Reddit when keyed). Plus `scripts/adapters/worldbank.py`, the country-grain workhorse (World Bank, no auth): economy / labor / cost-coarse / governance (WGI) / internet / health, per-indicator, empty→degrade.
+- `scripts/lookups.py` — US family-distance / internet / airport / walkability / hazard, plus `place_centroid` and `nearby_places` (gem-finder engine: overlooked places within a radius of an anchor, from the bundled gazetteer + ACS population; bundled data, no network).
+- `scripts/country_lookups.py` — country-grain lookups: `resolve_country` (identity/centroid/currency/tz), `gpi` (safety), `diaspora` (belonging, origin×dest), `passport` (short-stay TRAVEL access only — firewalled from fit), `fx` (home-currency, Frankfurter). `gpi`/`diaspora` await verified data drops (`datasets/SOURCES.md`) and degrade to `unavailable` until then.
+- `scripts/geo.py` — Census FIPS resolver (lat/lon → state/county/place/tract) + haversine. Shared by cost/dynamism/safety and the distance lookups.
+- `scripts/verify_keys.py` — live per-key probe (OK / FAIL / SKIP). `scripts/bundle_datasets.py` — refresh the `datasets/` CSVs (US: OurAirports + Census Gazetteer; international: `country_centroids.csv` from mledoze/countries, `passport_index.csv` from ilyankou); `--check-stale` reports each dataset's vintage from `datasets/SOURCES.md`.
+- `scripts/config.py` — resolve the instance config: data root + `tenant_id` + schema `version` (env → `~/.solytus/habitat/config.yaml` → default). `scripts/mcp_mock.py` — a mock MCP layer over the script surface (tenant-scoped, idempotent writes) to check MCP-readiness without a server.

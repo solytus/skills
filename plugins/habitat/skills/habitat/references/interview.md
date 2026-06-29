@@ -1,8 +1,8 @@
-# Interview (UC1)
+# Interview
 
-Inspiration-seeded, responsive interview that refines the profile over time — **Bet 1**,
-the distinctive feature. Interactive: Claude conducts it. Recommended model: **Opus** for
-initial / deep-dive interviews, Sonnet for routine refreshes.
+A responsive, inspiration-seeded interview that refines the profile over time. Claude conducts
+it interactively. Recommended model: **Opus** for initial / deep-dive interviews, Sonnet for
+routine refreshes.
 
 ## Procedure
 
@@ -43,15 +43,15 @@ initial / deep-dive interviews, Sonnet for routine refreshes.
    accepted, write only the interview record — no snapshot, no version bump.
 8. **Confirm** what changed in a line or two.
 
-## Measuring drift (F1 / F3)
+## Measuring drift
 
-The `versions/` snapshots are the raw material for the bet checks. To quantify how much the
-profile has moved (Bet 1's "interview isn't theater"; Bet 3's "preferences evolve"), read the
+The `versions/` snapshots let you quantify how much the profile has actually moved. Read the
 two profile YAMLs and pass their `preferences` lists to `profile_diff`:
 
 ```
 python3 scripts/profile_diff.py --before @v1.json --after @vN.json --threshold 30
 ```
 
-It returns added / removed / changed preferences and a `delta_pct` — the measurable signal for
-F1 (<~30% vs a one-sit-down form) and F3 (<15% over 12 months), replacing an eyeballed judgment.
+It returns added / removed / changed preferences and a `delta_pct` — a measurable read on how
+much an interview moved the profile, instead of an eyeballed guess. `--threshold` adds an
+`exceeds_threshold` flag when the change is larger than the given percentage.

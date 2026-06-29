@@ -1,4 +1,4 @@
-# Evaluate a country (international triage — UC3-intl)
+# Evaluate a country (international triage)
 
 Country-grain **triage screen**, not a residence decision: "is this country worth a city
 deep-dive?" Recommended model: **Sonnet** (Opus for the first renegotiation of a profile).

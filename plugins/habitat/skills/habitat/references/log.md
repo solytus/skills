@@ -1,4 +1,4 @@
-# Review the log (UC4)
+# Review the log
 
 ## Procedure
 

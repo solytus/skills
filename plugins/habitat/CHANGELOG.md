@@ -6,6 +6,12 @@ and this skill adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-06-28
+### Changed
+- Documentation pass across `SKILL.md` and the references: removed build-process history,
+  status/test-count boasts, and internal project jargon (Bet/F-codes, UC labels); tightened
+  language for clarity and concision. No functional changes.
+
 ## [1.0.0] - 2026-06-22
 ### Added
 - First packaged release of Habitat as a Solytus single-skill plugin.

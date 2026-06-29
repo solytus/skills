@@ -30,7 +30,7 @@ Cache filenames sanitize the key: `::` → `__`, `,` → `_`
 
 ```yaml
 schema_version: 1
-owner: me                 # reserved for Phase 2 multi-profile; single profile in V1
+owner: me                 # reserved for multi-profile; single profile for now
 version: 7                  # bumped on each committed interview
 updated_at: 2026-05-26T14:32
 preferences:

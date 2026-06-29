@@ -1,7 +1,6 @@
-# Evaluate a place (UC3)
+# Evaluate a place
 
-Single-place evaluation. Recommended model: **Sonnet**. Phase 2 runs on placeholder
-adapter data (stubs return `unavailable`); Phase 3 wires the real fetches.
+Single-place evaluation. Recommended model: **Sonnet**.
 
 ## Procedure
 
@@ -38,13 +37,11 @@ adapter data (stubs return `unavailable`); Phase 3 wires the real fetches.
      --data-root <data> --place-key <key> --geocode "<lat,lon>" --level <level> \
      [--family "<loc>" ...] [--force-refresh]
    ```
-   All 5 lookups are deterministic — **walkability + hazard were promoted from
-   reason-with-search in Phase 3a**. Pass `--data-root` so internet / walkability / hazard
-   cache; internet + hazard then share one FCC coordinate lookup and cost + dynamism share
-   one Census geocode, so a cold eval resolves each coordinate once, not four times.
+   All 5 lookups are deterministic. Pass `--data-root` so internet / walkability / hazard
+   cache — a cold eval then resolves each shared coordinate once, not repeatedly.
 5. **Reason-with-search** the rest (healthcare, education, nature, political, commercial
    rent / industries / tax incl. **residential property tax**, home insurability, + any
-   margins) per `reason-with-search.md`. Walkability and natural-hazard exposure are now
+   margins) per `reason-with-search.md`. Walkability and natural-hazard exposure are
    deterministic lookups (step 4) — reason only to *supplement* them (e.g. insurer
    availability on top of the FEMA hazard scores). Never fabricate; mark grain fallbacks honestly.
 6. **Score** per `scoring.md`: on hard-filter pass, write a narrative + a headline fit

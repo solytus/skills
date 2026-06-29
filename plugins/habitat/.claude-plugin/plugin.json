@@ -1,6 +1,6 @@
 {
   "name": "habitat",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find & track places to live that fit an evolving preference profile — preference interview, place evaluation, profile-matched shortlists, and a place log. Invoked by name (\"Habitat, ...\").",
   "author": {
     "name": "Sean Park",
