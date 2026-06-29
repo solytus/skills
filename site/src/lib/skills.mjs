@@ -45,17 +45,21 @@ function parseOverview(raw) {
   return { data, body: m[2].trim() };
 }
 
-/** First dated release in a Keep-a-Changelog file: `## [x.y.z] - YYYY-MM-DD`.
- *  Skips an undated `## [Unreleased]` heading. */
-function latestRelease(changelog) {
-  const m = changelog.match(/^##\s*\[([^\]]+)\]\s*-\s*(\d{4}-\d{2}-\d{2})/m);
-  return m ? { version: m[1], date: m[2] } : null;
+/** Every dated release in a Keep-a-Changelog file: `## [x.y.z] - YYYY-MM-DD`,
+ *  newest first (file order). Skips an undated `## [Unreleased]` heading. */
+function parseReleases(changelog) {
+  const out = [];
+  for (const m of changelog.matchAll(/^##\s*\[([^\]]+)\]\s*-\s*(\d{4}-\d{2}-\d{2})/gm)) {
+    out.push({ version: m[1], date: m[2] });
+  }
+  return out;
 }
 
 /**
  * @returns {Array<{name:string,version:string,description:string,homepage:string,
  *   license:string,skillBody:string,changelog:string,tagline:string,
- *   cardDescription:string,overviewBody:string,latestVersion:string,latestDate:string}>}
+ *   cardDescription:string,overviewBody:string,releases:Array<{version:string,date:string}>,
+ *   latestVersion:string,latestDate:string}>}
  */
 export function getSkills() {
   if (!existsSync(PLUGINS_DIR)) return [];
@@ -93,7 +97,8 @@ export function getSkills() {
     const changelog = existsSync(changelogPath)
       ? readFileSync(changelogPath, 'utf8')
       : '';
-    const rel = latestRelease(changelog);
+    const releases = parseReleases(changelog);
+    const rel = releases[0] || null;
 
     out.push({
       name,
@@ -108,6 +113,7 @@ export function getSkills() {
       tagline,
       cardDescription,
       overviewBody,
+      releases,
       latestVersion: rel ? rel.version : manifest.version || '0.0.0',
       latestDate: rel ? rel.date : '',
     });

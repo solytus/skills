@@ -16,6 +16,12 @@ const installCmd = `/plugin install ${skill.name}@${MARKETPLACE_NAME}`;
 const repoSubtreeUrl = `https://github.com/${GITHUB_OWNER_REPO}/tree/main/plugins/${skill.name}`;
 const changelogUrl = `https://github.com/${GITHUB_OWNER_REPO}/blob/main/plugins/${skill.name}/CHANGELOG.md`;
 
+// Up to the last 3 dated releases; fall back to the manifest version when a skill
+// has no parseable changelog yet.
+const versionRows = skill.releases.length
+  ? skill.releases.slice(0, 3)
+  : [{ version: skill.latestVersion, date: skill.latestDate }];
+
 // Editorial "why" — the maker's story, rendered from plugins/<skill>/overview.md.
 // Absent overview → empty → the editorial section is omitted (graceful fallback).
 const editorialHtml = skill.overviewBody ? await marked.parse(skill.overviewBody) : '';
@@ -59,14 +65,14 @@ const editorialHtml = skill.overviewBody ? await marked.parse(skill.overviewBody
       <div class="install-bar__row">
         <h3 class="label">Version history</h3>
         <div class="changelog">
-          <div class="changelog-row">
-            <div class="changelog__row" style="flex:0 0 auto;">
-              <span class="v">v{skill.latestVersion}</span>
-              {skill.latestDate && <span class="d" style="margin-left:1rem;">{skill.latestDate}</span>}
+          {versionRows.map((r) => (
+            <div class="changelog__row">
+              <span class="v">v{r.version}</span>
+              {r.date && <span class="d">{r.date}</span>}
             </div>
-            <a class="textcta" href={changelogUrl}>View full changelog <span aria-hidden="true">→</span></a>
-          </div>
+          ))}
         </div>
+        <a class="textcta changelog__more" href={changelogUrl}>View full changelog <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </div>
@@ -112,7 +118,6 @@ const editorialHtml = skill.overviewBody ? await marked.parse(skill.overviewBody
   .install-bar__row + .install-bar__row { border-top: 1px solid var(--border-strong); }
   .install-bar__row--meta { border-top: none !important; padding-top: 0; }
   .install-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem; }
-  .changelog-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
   @media (max-width: 640px) { .install-steps { grid-template-columns: 1fr; } }
 
   /* ---- body: single wide editorial column ---- */
@@ -146,6 +151,7 @@ const editorialHtml = skill.overviewBody ? await marked.parse(skill.overviewBody
   .changelog__row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
   .changelog__row .v { font-family: var(--font-sans); font-weight: 700; text-transform: uppercase; letter-spacing: .02em; font-size: .875rem; }
   .changelog__row .d { font-family: var(--font-mono); font-size: .75rem; color: var(--text-muted); }
+  .changelog__more { margin-top: 1.25rem; }
 
   @media (max-width: 860px) {
     .detail-tag { white-space: normal; text-wrap: balance; max-width: 32ch; }
