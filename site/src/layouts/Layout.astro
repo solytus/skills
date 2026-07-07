@@ -2,15 +2,35 @@
 import '../styles/solytus.css';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import { SITE_NAME, SITE_DESCRIPTION, DEFAULT_OG_IMAGE } from '../config.mjs';
 
 interface Props {
   title: string;
   description?: string;
+  /** Social-share image; site-relative or absolute. Defaults to the brand card. */
+  image?: string;
+  /** Open Graph type — 'website' for the home, 'article' for skill pages. */
+  ogType?: string;
+  /** schema.org node(s) emitted as one JSON-LD @graph. */
+  jsonLd?: object | object[] | null;
 }
 const {
   title,
-  description = 'Solytus is an umbrella for things I build and open up — currently productized Claude Code skills. Install-first, open source, yours to keep.',
+  description = SITE_DESCRIPTION,
+  image = DEFAULT_OG_IMAGE,
+  ogType = 'website',
+  jsonLd = null,
 } = Astro.props;
+
+// Absolute URLs (crawlers + social scrapers require them). Astro.site is set in
+// astro.config.mjs, so these resolve at build time.
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL(image, Astro.site).href;
+
+const nodes = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const graph = nodes.length ? { '@context': 'https://schema.org', '@graph': nodes } : null;
+// Escape `<` so no field value can break out of the <script> tag (JSON-in-HTML safety).
+const graphJson = graph ? JSON.stringify(graph).replace(/</g, '\\u003c') : null;
 ---
 
 <!DOCTYPE html>
@@ -20,6 +40,32 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Open Graph (link previews on LinkedIn/Slack/Facebook, and AI context) -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter / X card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Icons + PWA manifest -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0D0D0E" media="(prefers-color-scheme: dark)" />
+
+    {graphJson && <script type="application/ld+json" set:html={graphJson} />}
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import sitemap from '@astrojs/sitemap';
 
 // Plain static Astro site (no Starlight). The home catalog and per-skill pages are
 // generated from the repo at build time by src/lib/skills.mjs — adding a skill needs
@@ -14,4 +15,7 @@ import { defineConfig } from 'astro/config';
 
 export default defineConfig({
   site: 'https://solytus.com',
+  // Emits /sitemap-index.xml + /sitemap-0.xml at build time from the static routes
+  // (home + every /skills/<name>/). Referenced from public/robots.txt.
+  integrations: [sitemap()],
 });

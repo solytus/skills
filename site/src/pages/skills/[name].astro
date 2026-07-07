@@ -3,7 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import Command from '../../components/Command.astro';
 import { marked } from 'marked';
 import { getSkills } from '../../lib/skills.mjs';
-import { GITHUB_OWNER_REPO, MARKETPLACE_NAME } from '../../config.mjs';
+import { GITHUB_OWNER_REPO, MARKETPLACE_NAME, SITE_URL } from '../../config.mjs';
+import { skillTitle, softwareApplicationSchema, breadcrumbSchema } from '../../lib/seo.mjs';
 
 export function getStaticPaths() {
   return getSkills().map((s) => ({ params: { name: s.name }, props: { skill: s } }));
@@ -12,6 +13,16 @@ export function getStaticPaths() {
 const { skill } = Astro.props;
 const display = skill.name.charAt(0).toUpperCase() + skill.name.slice(1);
 const marketplaceCmd = `/plugin marketplace add ${GITHUB_OWNER_REPO}`;
+
+const pageUrl = `${SITE_URL}/skills/${skill.name}/`;
+const jsonLd = [
+  softwareApplicationSchema(skill, pageUrl),
+  breadcrumbSchema([
+    { name: 'Home', url: `${SITE_URL}/` },
+    { name: 'Skills', url: `${SITE_URL}/#skills` },
+    { name: display },
+  ]),
+];
 const installCmd = `/plugin install ${skill.name}@${MARKETPLACE_NAME}`;
 const repoSubtreeUrl = `https://github.com/${GITHUB_OWNER_REPO}/tree/main/plugins/${skill.name}`;
 const changelogUrl = `https://github.com/${GITHUB_OWNER_REPO}/blob/main/plugins/${skill.name}/CHANGELOG.md`;
@@ -27,7 +38,7 @@ const versionRows = skill.releases.length
 const editorialHtml = skill.overviewBody ? await marked.parse(skill.overviewBody) : '';
 ---
 
-<Layout title={`${display} — Solytus`} description={skill.description}>
+<Layout title={skillTitle(skill)} description={skill.description} ogType="article" jsonLd={jsonLd}>
   <!-- HEADER: name + tagline -->
   <section class="detail-head" aria-labelledby="skill-name">
     <div class="wrap">

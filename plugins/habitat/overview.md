@@ -1,5 +1,6 @@
 ---
 tagline: Find your ideal environment
+seoJob: find & track places to live
 cardDescription: Find your ideal environment. Tell Habitat what you're looking for and it builds a weighted list of your criteria and uses it to find, evaluate, and log places that fit. Update your criteria, explore new options, or deep dive into promising candidates to zero in on where you can truly feel at home.
 ---
 

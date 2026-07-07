@@ -58,7 +58,7 @@ function parseReleases(changelog) {
 /**
  * @returns {Array<{name:string,version:string,description:string,homepage:string,
  *   license:string,skillBody:string,changelog:string,tagline:string,
- *   cardDescription:string,overviewBody:string,releases:Array<{version:string,date:string}>,
+ *   cardDescription:string,seoJob:string,overviewBody:string,releases:Array<{version:string,date:string}>,
  *   latestVersion:string,latestDate:string}>}
  */
 export function getSkills() {
@@ -86,11 +86,13 @@ export function getSkills() {
     // bloated with marketing copy. Absent overview.md degrades gracefully.
     let tagline = '';
     let cardDescription = description;
+    let seoJob = ''; // short job phrase for the SEO <title>; falls back to tagline
     let overviewBody = '';
     if (existsSync(overviewPath)) {
       const { data, body } = parseOverview(readFileSync(overviewPath, 'utf8'));
       tagline = data.tagline || '';
       cardDescription = data.cardDescription || description;
+      seoJob = data.seoJob || '';
       overviewBody = body;
     }
 
@@ -112,6 +114,7 @@ export function getSkills() {
       changelog,
       tagline,
       cardDescription,
+      seoJob,
       overviewBody,
       releases,
       latestVersion: rel ? rel.version : manifest.version || '0.0.0',

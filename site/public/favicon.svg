@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Solytus">
+  <style>
+    .bg { fill: #0D0D0E; }
+    .fg { fill: #FFFFFF; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #FFFFFF; }
+      .fg { fill: #0D0D0E; }
+    }
+  </style>
+  <rect class="bg" width="32" height="32"/>
+  <text class="fg" x="16" y="23.5" text-anchor="middle"
+        font-family="'Schibsted Grotesk', -apple-system, Helvetica, Arial, sans-serif"
+        font-weight="700" font-size="22" letter-spacing="0.5">S</text>
+</svg>

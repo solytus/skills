@@ -1,0 +1,53 @@
+# solytus.com — robots policy (author-owned)
+# Each crawler obeys only its most-specific matching group below.
+
+# Classic search crawlers (Googlebot, Bingbot, etc.): full access.
+User-agent: *
+Allow: /
+
+# ── AI answer engines — ALLOWED to retrieve & cite ──────────────────────────
+# These are the search / user-initiated fetchers. Allowing them makes Solytus
+# eligible to be surfaced and cited in ChatGPT, Claude, and Perplexity answers.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# ── AI model-training crawlers — DISALLOWED ─────────────────────────────────
+# No training on this content. Blocking these does not affect search ranking or
+# AI-citation eligibility (that's the search/user bots above).
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
+
+Sitemap: https://solytus.com/sitemap-index.xml
