@@ -7,14 +7,21 @@ interface Props {
     name: string;
     version: string;
     cardDescription: string;
+    cardColorLight?: string;
+    cardColorDark?: string;
   };
 }
 const { skill } = Astro.props;
 const display = skill.name.charAt(0).toUpperCase() + skill.name.slice(1);
 const installCmd = `/plugin install ${skill.name}@${MARKETPLACE_NAME}`;
+// Per-skill card tint (from plugins/<skill>/overview.md); falls back to the CSS default.
+const cardStyle = [
+  skill.cardColorLight && `--card-bg:${skill.cardColorLight}`,
+  skill.cardColorDark && `--card-bg-dark:${skill.cardColorDark}`,
+].filter(Boolean).join(';');
 ---
 
-<article class="card" aria-labelledby={`card-${skill.name}`}>
+<article class="card" style={cardStyle || undefined} aria-labelledby={`card-${skill.name}`}>
   <div class="card__main">
     <div class="card__top">
       <h3 id={`card-${skill.name}`}>{display}</h3>

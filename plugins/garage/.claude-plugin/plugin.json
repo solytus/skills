@@ -1,0 +1,11 @@
+{
+  "name": "garage",
+  "version": "1.0.0",
+  "description": "A per-vehicle assistant that builds a knowledge base and a maintenance record for your car: research cited specs, log the work you do, see what's actually due, and export reports for the shop. The more you use it, the more it knows your exact vehicle. Invoked by name (\"Garage, ...\").",
+  "author": {
+    "name": "Sean Park",
+    "url": "https://solytus.com"
+  },
+  "homepage": "https://github.com/solytus/skills",
+  "license": "MIT"
+}

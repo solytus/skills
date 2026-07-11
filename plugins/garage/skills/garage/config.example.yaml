@@ -1,0 +1,12 @@
+# Garage instance config (Tier-2 — system pointers). Copy to ~/.solytus/garage/config.yaml.
+# Read by scripts/config.py (a minimal FLAT reader — keep it flat `key: value`).
+# Your vehicles, history, and knowledge live in <data_root>, edited via the skill.
+
+version: 1                       # config schema version — leave as-is; the skill migrates it
+
+# Where your Garage data lives (vehicles, exports, cache). Absolute path or ~.
+# Override at runtime with the GARAGE_DATA_ROOT env var. Default: ~/.solytus/garage/data
+data_root: ~/.solytus/garage/data
+
+# Optional. Reserved for the future multi-tenant / MCP path; keep "local" for personal use.
+tenant_id: local

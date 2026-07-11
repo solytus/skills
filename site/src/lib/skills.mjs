@@ -87,12 +87,16 @@ export function getSkills() {
     let tagline = '';
     let cardDescription = description;
     let seoJob = ''; // short job phrase for the SEO <title>; falls back to tagline
+    let cardColorLight = ''; // per-skill card tint (light); '' → CSS default
+    let cardColorDark = '';  // per-skill card tint (dark);  '' → CSS default
     let overviewBody = '';
     if (existsSync(overviewPath)) {
       const { data, body } = parseOverview(readFileSync(overviewPath, 'utf8'));
       tagline = data.tagline || '';
       cardDescription = data.cardDescription || description;
       seoJob = data.seoJob || '';
+      cardColorLight = data.cardColorLight || '';
+      cardColorDark = data.cardColorDark || '';
       overviewBody = body;
     }
 
@@ -115,6 +119,8 @@ export function getSkills() {
       tagline,
       cardDescription,
       seoJob,
+      cardColorLight,
+      cardColorDark,
       overviewBody,
       releases,
       latestVersion: rel ? rel.version : manifest.version || '0.0.0',

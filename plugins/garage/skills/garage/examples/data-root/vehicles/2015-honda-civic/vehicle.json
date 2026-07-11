@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "vehicle_id": "2015-honda-civic",
+  "slug": "2015-honda-civic",
+  "display": "2015 Honda Civic",
+  "year": 2015, "make": "Honda", "model": "Civic", "trim": "LX",
+  "engine_code": "R18Z1", "engine": "1.8L R18", "drivetrain": "FWD",
+  "transmission": "automatic", "fuel": "gasoline", "market": "US",
+  "vin": "", "plate": "", "nicknames": ["civic"],
+  "interference": true,
+  "usage_profile": "severe",
+  "clocks": [
+    {"name": "chassis", "kind": "odometer", "unit": "mi", "label": "Chassis odometer", "primary": true}
+  ]
+}
