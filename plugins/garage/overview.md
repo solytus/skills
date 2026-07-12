@@ -12,8 +12,8 @@ Garage is an assistant for your car that gets smarter the longer you use it. Poi
 a vehicle and it starts with what's true of the make and model; every question you ask,
 every manual you upload, and every job you log then teaches it about your exact car. At
 its core, this is just a utility to help you keep track of everything you might do or look
-up about your car, leveraging the language capabilities of LLMs to make consistent logging
-as organic and easy as possible.
+up about your car, leveraging the natural strengths of LLMs to make consistent logging
+as intuitive as possible.
 
 ## How it works
 
@@ -26,24 +26,22 @@ The maintenance record grows every time you work. Log work as you finish it and 
 files it against that part's clock, so maintenance due dates are always calculated from
 your real history. Corrections are new entries; the record is never rewritten.
 
-The two feed each other. Logging a repair tells the knowledge base what's actually on your
-car; the knowledge base tells the tracker which schedule and specs apply to it. The longer
-that loop runs, the less Garage leans on a generic manual and the more it draws on the
-specific vehicle in your driveway.
+The two feed each other: logging a repair tells the knowledge base what's actually on your
+car, and the knowledge base tells the tracker which schedule and specs apply to it. The
+longer that loop runs, the more specialized Garage becomes.
 
 ## How to use it
 
 Start by telling Garage any information you have about your car: the VIN, the mileage, how
 it's driving, the weird rattle when you put the car in reverse. The skill will take
-whatever you give it and start to define your specific vehicle. From then on, just give it
-anything related to your car or ask it when you have questions, and it will organically
-grow the knowledge base and maintenance record.
+whatever you give it and start to define your specific vehicle. From then on just invoke it
+by name (“Garage, …”), give it anything related to your car or ask it when you have
+questions, and it will organically grow the knowledge base and maintenance record.
 
-Don't worry about formatting or anything like that, the benefit of the LLM is that you can
-just give the skill whatever you have and it will find the key information and log it
-consistently for you. Whether you have specs from a repair manual, a picture of an invoice
-from an oil change, or your own notes from your afternoon in the garage, everything is
-useful.
+Don't worry about formatting, you can give the skill whatever you have and it will find the
+key information and log it consistently for you. Whether you have specs from a repair
+manual, a picture of an invoice from an oil change, or your own notes from your afternoon in
+the garage, everything is useful.
 
 Generic intervals are labeled as estimates. Answers about torque, brakes, and fluids say
 where they came from and when to have a technician confirm. The genuinely dangerous jobs
